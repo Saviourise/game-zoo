@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './landingPage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons'
 
 function LandingPage() {
 
@@ -14,9 +16,42 @@ function LandingPage() {
         alert(searchValue)
     }
 
+    const openNav = () => {
+        document.getElementsByClassName("home-page-side-nav")[0].style.width = "100%";
+    }
+
+    const closeNav = () => {
+        document.getElementsByClassName("home-page-side-nav")[0].style.width = "0";
+    }
+
     return (
         <div className='home-page' id='home-page'>
+            <div className="home-page-side-nav">
+                <a className="close-btn" onClick={closeNav}>&times;</a>
+                <a className='home-page-nav-bar-item active'>
+                    Home
+                </a>
+                <a className='home-page-nav-bar-item'>
+                    Game Zoo
+                </a>
+                <a className='home-page-nav-bar-item'>
+                    Game Arena
+                </a>
+                <a className='home-page-nav-bar-item'>
+                    About Us
+                </a>
+                <a className='home-page-nav-bar-item'>
+                    Contact Us
+                </a>
+            </div>
             <div className="home-page-container">
+
+                <div onClick={openNav} className='responsive-nav-bar'>
+                    <p className='nav-bar-icon'>
+                        <FontAwesomeIcon icon={faBarsStaggered} />
+                    </p>
+                </div>
+                
                 <div className='home-page-nav-bar-container'>
                     <nav className='home-page-nav-bar'>
                         <a className='home-page-nav-bar-item active'>
