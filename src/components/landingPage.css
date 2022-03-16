@@ -156,6 +156,7 @@
     }
     .home-page-search-input {
         width: 80%;
+        margin-top: -20px;
     }
     .home-page-search-submit-btn {
         width: 15%;
