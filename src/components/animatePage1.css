@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: auto;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+#animated-page-1 {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#animated-page-2 {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#animated-page-3 {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 80%;
+}
+
+#box1 {
+    background-image: url('../assets/gamezone_Images/nier.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#box2 {
+    background: url("../assets/gamezone_Images/2_ELDEN-RING- BG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#box3 {
+    background: url("../assets/gamezone_Images/BG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.animated-page-2 {
+    flex: 80%;
+    
+}
+
+#animated-page-1 {
+    flex: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right top;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sep1 {
+    display: flex;
+    flex-direction: row;
+    perspective: 1000px;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.sep3 {
+    display: flex;
+    flex-direction: row;
+    perspective: 1000px;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.sep2 {
+    display: flex;
+    flex-direction: row;
+    perspective: 1000px;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.sep-1 {
+    flex: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hmmm {
+    width: 80%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    perspective: 1000px;
+}
+
+.date-released {
+    color: white;
+    font-size: 20px;
+    cursor: default;
+}
+
+.day {
+    color: #D95BA0;
+    font-size: 150px;
+    margin: -20px 0px;
+    cursor: default;
+}
+
+.month {
+    color: white;
+    font-size: 30px;
+    cursor: default;
+}
+
+.year {
+    color: #D95BA0;
+    font-size: 40px;
+    cursor: default;
+}
+
+.game-text {
+    margin-top: -160px;
+    margin-left: 40px;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bolder;
+    z-index: 12;
+    color: white;
+    cursor: pointer;
+}
+
+.val {
+    color: #D95BA0;
+}
+
+.overlay-img {
+    width: 700px;
+    height: 400px;
+    position: absolute;
+    margin-top: -55px;
+    transition: 3s;
+}
+
+.overlay-img-2 {
+    width: 750px;
+    height: 550px;
+    position: absolute;
+    margin-top: -65px;
+    transition: 3s;
+}
+
+.overlay-img-3 {
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    margin-top: -157px;
+    transition: 3s;
+}
+
+.see-more-btn {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    margin-top: -50px;
+    margin-right: -600px;
+    transform: scale(1.0);
+    transition: 3s;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #D95BA0;
+    outline: none;
+    background: #D95BA0;
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    border-width:5px;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.box {
+    width: 75%;
+    height: 300px;
+    transform: skew(0deg);
+    transition: 3s;
+    box-shadow: 0 3px 10px rgba(0,0,0,.7);
+    border-radius: 20px;
+    margin-top: 150px;
+    display: inline-block;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .see-more-btn {
+        margin-top: 120%;
+        margin-right: 0px;
+    }
+    .overlay-img {
+        margin-top: -125%;
+    }
+    
+    .overlay-img-2 {
+        margin-top: -125%;
+    }
+    
+    .overlay-img-3 {
+        margin-top: -145%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .date-released {
+        font-size:15px;
+
+    }
+    .day {
+        font-size: 40px;
+        margin: 0px;
+    }
+    
+    .month {
+        font-size: 20px;
+    }
+    
+    .year {
+        font-size: 30px;
+    }
+    .sep1 {
+        flex-direction: column;
+        padding: 20px 0px;
+    }
+    
+    .sep3 {
+        flex-direction: column;
+        padding: 20px 0px;
+    }
+    
+    .sep2 {
+        flex-direction: column;
+        padding: 20px 0px;
+    }
+    .overlay-img {
+        width: 370px;
+        height: 350px;
+        margin-top: -65%;
+    }
+    
+    .overlay-img-2 {
+        width: 370px;
+        height: 350px;
+        margin-top: -45%;
+    }
+    
+    .overlay-img-3 {
+        width: 370px;
+        height: 350px;
+        margin-top: -65%;
+    }
+    .box {
+        width: 280px;
+        height: 300px;
+        margin-top: 80px;
+        margin-left: -40px;
+    }
+    .game-text {
+        font-size: 25px;
+    }
+    .see-more-btn {
+        margin-top: 220%;
+        margin-right: 0px;
+        font-size: 15px;
+    }
+    .hmmm {
+        height: 80vh;
+    }
+}
