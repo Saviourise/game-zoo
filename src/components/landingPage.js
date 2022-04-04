@@ -20,49 +20,6 @@ function LandingPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        request
-        .get("https://rawg.io/api/games")
-        .query({ key: "f33523355be74be0a810f6f4d59421b6" })
-        .query({ search: searchValue })
-        .query({ page_size: 10 })
-        .then((data) => {
-            youtubeSearch(data)
-        })
-        .catch(async (_error) => {
-            alert("Error, An error occurred, please try again")
-        })
-    }
-
-    const youtubeSearch = (data) => {
-        console.log(data)
-        data.body.results.map((game) => {
-            //console.log(game.name)
-            const gameName = game.name + " trailer";
-            const gameRelease = game.released;
-            //console.log(gameName)
-            request
-            .get("https://www.googleapis.com/youtube/v3/search")
-            .query({ key: "AIzaSyCKaraln3if3P7V-8sVLiGdOifFnjM6Uh4" })
-            .query({ type: "video" })
-            .query({ q: gameName })
-            .query({ maxResults: 5 })
-            .then((datavid) => {
-                // console.log(datavid.body.results)
-                // console.log("name of game trailer " + gameName)
-                // datavid.body.items.map((ids) => {
-                //     console.log(ids.id.videoId)
-                // })
-                const gameData = {};
-                gameData.videoIds = datavid.body.items;
-                gameData.name = game.name;
-                gameData.relesase = gameRelease;
-                setGamesInfo.push(gameData)
-            })
-            .catch(async (_error) => {
-                alert("Error, An error occurred, please try again")
-            })
-        })
-        console.log(gamesInfo)
     }
 
     const openNav = () => {
