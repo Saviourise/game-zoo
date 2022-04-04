@@ -116,7 +116,7 @@ function LandingPage() {
                                 <a className='home-page-nav-bar-item active'>
                                     Home
                                 </a>
-                                <Link to='/game-zoo' className='home-page-nav-bar-item'>
+                                <Link to='/game-zoo' style={{color: '#fff', textDecoration: 'none'}} className='home-page-nav-bar-item'>
                                     Game Zoo
                                 </Link>
                                 <Link to='/game-arena' style={{color: '#fff', textDecoration: 'none'}} className='home-page-nav-bar-item'>
