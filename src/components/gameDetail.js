@@ -37,19 +37,19 @@ const GameDatail = () => {
 
     const getTrailer = () => {
         const gameName = params.slug + " trailer";
-        //console.log(gameName)
-        // request
-        // .get("https://www.googleapis.com/youtube/v3/search")
-        // .query({ key: "AIzaSyCKaraln3if3P7V-8sVLiGdOifFnjM6Uh4" })
-        // .query({ type: "video" })
-        // .query({ q: gameName })
-        // .query({ maxResults: 1 })
-        // .then((datavid) => {
-        //     setgameVids(datavid.body.items[0].id.videoId)
-        // })
-        // .catch(async (_error) => {
-        //     alert(_error.message)
-        // })
+        console.log(gameName)
+        request
+        .get("https://www.googleapis.com/youtube/v3/search")
+        .query({ key: "AIzaSyCKaraln3if3P7V-8sVLiGdOifFnjM6Uh4" })
+        .query({ type: "video" })
+        .query({ q: gameName })
+        .query({ maxResults: 1 })
+        .then((datavid) => {
+            setgameVids(datavid.body.items[0].id.videoId)
+        })
+        .catch(async (_error) => {
+            alert(_error.message)
+        })
     }
 
     useEffect(() => {
