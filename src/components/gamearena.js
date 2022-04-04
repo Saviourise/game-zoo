@@ -131,19 +131,19 @@ function GameArena() {
                     filteredGames.map((game, i) => {
                         return (
                             <section className='game-card' key={i}>
-                                    <iframe className='videoFrame'
-                                        src={`https://www.youtube.com/embed/${game.gameVideoId}`}
-                                        allowfullscreen="allowfullscreen"
-                                        mozallowfullscreen="mozallowfullscreen" 
-                                        msallowfullscreen="msallowfullscreen" 
-                                        oallowfullscreen="oallowfullscreen" 
-                                        webkitallowfullscreen="webkitallowfullscreen"
-                                        frameBorder="0"
-                                    >
-                                    </iframe>
-                                    <div className='desc'>
-                                        <h4 className="h4">{game.gameName}</h4>
-                                    </div>
+                                <iframe className='videoFrame'
+                                    src={`https://www.youtube.com/embed/${game.gameVideoId}`}
+                                    allowfullscreen="allowfullscreen"
+                                    mozallowfullscreen="mozallowfullscreen" 
+                                    msallowfullscreen="msallowfullscreen" 
+                                    oallowfullscreen="oallowfullscreen" 
+                                    webkitallowfullscreen="webkitallowfullscreen"
+                                    frameBorder="0"
+                                >
+                                </iframe>
+                                <div className='desc'>
+                                    <h4 className="h4">{game.gameName}</h4>
+                                </div>
                             </section>
                         )
                     }) : 

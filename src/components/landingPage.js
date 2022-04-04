@@ -81,9 +81,9 @@ function LandingPage() {
                     <a className='home-page-nav-bar-item active'>
                         Home
                     </a>
-                    <a className='home-page-nav-bar-item'>
+                    <Link to='/game-zoo' className='home-page-nav-bar-item'>
                         Game Zoo
-                    </a>
+                    </Link>
                     <Link to='/game-arena' className='home-page-nav-bar-item'>
                         Game Arena
                     </Link>
