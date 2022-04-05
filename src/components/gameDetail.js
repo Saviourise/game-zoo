@@ -72,9 +72,9 @@ const GameDatail = () => {
                         Genre: 
                     </span>
                     {
-                        gameGenres.map((gen) => {
+                        gameGenres.map((gen, i) => {
                             return (
-                                <span className='genres'>{gen.name}, </span>
+                                <span key={i} className='genres'>{gen.name}, </span>
                             )
                         })
                     }
@@ -84,9 +84,9 @@ const GameDatail = () => {
 
                 <p className='des'>Operating Systems</p>
                 {
-                    gamePlatforms.map((platform) => {
+                    gamePlatforms.map((platform, i) => {
                         return (
-                            <details>
+                            <details key={i}>
                                 <summary>{platform.platform.name}</summary>
                                 <p className='min-req'>{platform.requirements.minimum}</p>
                             </details>
@@ -99,9 +99,9 @@ const GameDatail = () => {
                         Tags: 
                     </span>
                     {
-                        gameTags.map((tag) => {
+                        gameTags.map((tag, i) => {
                             return (
-                                <span className='tags'>{tag.name.replace('-', ' ')}</span>
+                                <span key={i} className='tags'>{tag.name.replace('-', ' ')}</span>
                             )
                         })
                     }
