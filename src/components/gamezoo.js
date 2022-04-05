@@ -2,6 +2,7 @@ import './gamezoo.css'
 import { useState, useEffect } from 'react';
 import request from 'superagent';
 import { Link } from 'react-router-dom';
+import Pagination from "react-js-pagination";
 
 const GameZoo = () => {
 
@@ -17,8 +18,6 @@ const GameZoo = () => {
     const [previousPage, setPreviousPage] = useState('')
 
     const [games, setGames] = useState([])
-
-    const [empty, setEmpty] = useState('Uh Oh! This Place Is Empty!!')
 
     const addGames = (item) => {
         request
@@ -39,6 +38,7 @@ const GameZoo = () => {
     
 
     const handleChange = (e) => {
+        setGames([])
         e.preventDefault();
 
         let searchValue = e.target.value;
@@ -48,7 +48,7 @@ const GameZoo = () => {
         searchValue = searchValue.toLowerCase();
 
         if (searchValue === '') {
-            setEmpty('Uh Oh! This Place Is Empty!!')
+            defaultGame()
             return setGames([])
         }
 
@@ -65,6 +65,7 @@ const GameZoo = () => {
     }
 
     const changePage = (page) => {
+        setGames([])
         request
         .get(page)
         .then((data) => {
@@ -78,7 +79,8 @@ const GameZoo = () => {
         })
     }
 
-    useEffect(() => {
+    const defaultGame = () => {
+        setGames([])
         request
         .get("https://rawg.io/api/games")
         .query({ key: "f33523355be74be0a810f6f4d59421b6" })
@@ -92,6 +94,10 @@ const GameZoo = () => {
         .catch(async (error) => {
             alert(error.message)
         })
+    }
+
+    useEffect(() => {
+        defaultGame()
     }, [])
     
     
@@ -126,9 +132,7 @@ const GameZoo = () => {
                         )
                     }) : 
                         <section className='nothing'>
-                            {
-                                searchItem === '' ? <div>{empty}</div> : <div className='loader'></div>
-                            }
+                            <div className='loader'></div>
                         </section>
                     
                 }
