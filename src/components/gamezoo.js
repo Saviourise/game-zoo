@@ -1,5 +1,5 @@
 import './gamezoo.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import request from 'superagent';
 import { Link } from 'react-router-dom';
 
@@ -49,6 +49,21 @@ const GameZoo = () => {
         if (searchValue != '') addGames(searchValue)
         
     }
+
+    useEffect(() => {
+        request
+        .get("https://rawg.io/api/games")
+        .query({ key: "f33523355be74be0a810f6f4d59421b6" })
+        .query({ page_size: 50 })
+        .then((data) => {
+            setGames(data.body.results)
+            //console.log(data.body.results)
+        })
+        .catch(async (error) => {
+            alert(error.message)
+        })
+    }, [])
+    
     
     return (
         <div style={container}>
