@@ -1,8 +1,7 @@
 import './gamezoo.css'
 import { useState, useEffect } from 'react';
 import request from 'superagent';
-import { Link, useParams } from 'react-router-dom';
-import Pagination from "react-js-pagination";
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 const GameZoo = () => {
 
@@ -12,6 +11,8 @@ const GameZoo = () => {
     };
 
     let params = useParams();
+
+    let navigate = useNavigate();
 
     const [searchItem, setSearchItem] = useState('')
 
@@ -41,6 +42,7 @@ const GameZoo = () => {
 
     const handleChange = (e) => {
         setGames([])
+        
         e.preventDefault();
 
         let searchValue = e.target.value;
@@ -51,10 +53,14 @@ const GameZoo = () => {
 
         if (searchValue === '') {
             defaultGame()
+            navigate(`/game-zoo`)
             return setGames([])
         }
 
-        if (searchValue != '') addGames(searchValue)
+        if (searchValue != '') {
+            navigate(`/game-zoo/search/${searchValue}`)
+            addGames(searchValue)
+        }
         
     }
 
