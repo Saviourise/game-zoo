@@ -7,7 +7,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.game-zoo-container {
+.game-detail-container {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -68,6 +68,7 @@ details {
 
 .game-tags {
     margin-left: 0;
+    width: 100%;
 }
 
 .genre {
@@ -119,10 +120,12 @@ details {
     font-size: 12px;
     color: #fff;
     background-color: #D95BA0;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-left: 10px;
-    padding: 5px;
-    line-height: 30px;
+    padding: 7px 10px;
+    display: inline-block;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 
 .website {
@@ -131,14 +134,14 @@ details {
     text-decoration: none;
 }
 
-.videoFrame {
+.videosFrame {
     width: 100%;
     height: 50vh;
 }
 
 @media screen and (max-width: 700px) {
-    .game-zoo-container {
-        height: 200vh;
+    .game-detail-container {
+        height: 160vh;
         flex-direction: column;
     }
     .details-con {
@@ -186,7 +189,7 @@ details {
     .tags {
         font-size: 10px;
     }
-    .videoFrame {
+    .videosFrame {
         width: 100%;
         height: 50vh;
     }

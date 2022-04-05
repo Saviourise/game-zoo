@@ -28,7 +28,7 @@ const GameDatail = () => {
             setgameGenres(data.body.genres)
             setgameTags(data.body.tags)
             setgamePlatforms(data.body.platforms)
-            console.log(data.body)
+            //console.log(data.body)
         })
         .catch(async (error) => {
             alert(error.message)
@@ -37,7 +37,7 @@ const GameDatail = () => {
 
     const getTrailer = () => {
         const gameName = params.slug + " trailer";
-        console.log(gameName)
+        //console.log(gameName)
         request
         .get("https://www.googleapis.com/youtube/v3/search")
         .query({ key: "AIzaSyCKaraln3if3P7V-8sVLiGdOifFnjM6Uh4" })
@@ -59,7 +59,7 @@ const GameDatail = () => {
     
 
     return (
-        <div className='game-zoo-container'>
+        <div className='game-detail-container'>
             
             <div className='details-con'>
                 <h2 className='game-name'>
@@ -94,30 +94,26 @@ const GameDatail = () => {
                     })
                 }
 
-                <p className='game-tags'>
+                <div className='game-tags'>
                     <span className='tag'>
                         Tags: 
                     </span>
                     {
                         gameTags.map((tag) => {
                             return (
-                                <span className='tags'>{tag.name}</span>
+                                <span className='tags'>{tag.name.replace('-', ' ')}</span>
                             )
                         })
                     }
-                </p>
+                </div>
             </div>
             <div className='trailer-con'>
                 <p className='trailer-name'>Trailer</p>
 
                 
-                <iframe className='videoFrame'
+                <iframe className='videosFrame'
                     src={`https://www.youtube.com/embed/${gameVids}`}
-                    allowfullscreen="allowfullscreen"
-                    mozallowfullscreen="mozallowfullscreen" 
-                    msallowfullscreen="msallowfullscreen" 
-                    oallowfullscreen="oallowfullscreen" 
-                    webkitallowfullscreen="webkitallowfullscreen"
+                    allowFullScreen="allowfullscreen"
                     frameBorder="0"
                 >
                 </iframe>

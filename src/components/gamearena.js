@@ -133,11 +133,7 @@ function GameArena() {
                             <section className='game-card' key={i}>
                                 <iframe className='videoFrame'
                                     src={`https://www.youtube.com/embed/${game.gameVideoId}`}
-                                    allowfullscreen="allowfullscreen"
-                                    mozallowfullscreen="mozallowfullscreen" 
-                                    msallowfullscreen="msallowfullscreen" 
-                                    oallowfullscreen="oallowfullscreen" 
-                                    webkitallowfullscreen="webkitallowfullscreen"
+                                    allowFullScreen="allowfullscreen"
                                     frameBorder="0"
                                 >
                                 </iframe>
