@@ -169,17 +169,16 @@ details {
 
 @media screen and (max-width: 700px) {
     .game-detail-container {
-        height: 160vh;
+        height: 190vh;
         flex-direction: column;
     }
     .details-con {
-        flex: 1;
+        height: 110vh;
         padding: 0px 20px;
     }
     .trailer-con {
-        flex: 1;
+        height: 80vh;
         padding: 20px;
-        height: 60vh;
     }
     summary {
         font-size: 12px;

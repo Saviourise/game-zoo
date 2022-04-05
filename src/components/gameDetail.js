@@ -123,7 +123,7 @@ const GameDatail = () => {
                     <span className='rating'> 
                         Rating: 
                     </span>
-                    {gameDetail.rating}/5
+                    {gameDetail.rating === 0 ? <>None</> : <>{gameDetail.rating} / 5</>}
                 </p>
                 <p className='website'>
                     <a className='website' href={`${gameDetail.website}`} target='_blank'>
