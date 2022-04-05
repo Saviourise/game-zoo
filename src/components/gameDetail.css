@@ -139,6 +139,34 @@ details {
     height: 50vh;
 }
 
+.next-page {
+    color: #fff;
+    background-color: #D95BA0;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin: 20px 0px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.previous-page {
+    color: #fff;
+    background-color: #D95BA0;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin: 20px 0px;
+    margin-right: 10px;
+    text-align: center;
+}
+
 @media screen and (max-width: 700px) {
     .game-detail-container {
         height: 160vh;

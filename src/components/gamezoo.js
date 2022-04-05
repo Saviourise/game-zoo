@@ -12,6 +12,10 @@ const GameZoo = () => {
 
     const [searchItem, setSearchItem] = useState('')
 
+    const [nextPage, setNextPage] = useState('')
+
+    const [previousPage, setPreviousPage] = useState('')
+
     const [games, setGames] = useState([])
 
     const [empty, setEmpty] = useState('Uh Oh! This Place Is Empty!!')
@@ -24,6 +28,8 @@ const GameZoo = () => {
         .query({ page_size: 50 })
         .then((data) => {
             setGames(data.body.results)
+            setNextPage(data.body.next)
+            setPreviousPage(data.body.previous)
             //console.log(data.body.results)
         })
         .catch(async (error) => {
@@ -50,6 +56,28 @@ const GameZoo = () => {
         
     }
 
+    const handleNextPage = () => {
+        changePage(nextPage)
+    }
+
+    const handlePreviousPage = () => {
+        changePage(previousPage)
+    }
+
+    const changePage = (page) => {
+        request
+        .get(page)
+        .then((data) => {
+            setGames(data.body.results)
+            setNextPage(data.body.next)
+            setPreviousPage(data.body.previous)
+            //console.log(data.body);
+        })
+        .catch(async (error) => {
+            alert(error.message)
+        })
+    }
+
     useEffect(() => {
         request
         .get("https://rawg.io/api/games")
@@ -57,7 +85,9 @@ const GameZoo = () => {
         .query({ page_size: 50 })
         .then((data) => {
             setGames(data.body.results)
-            //console.log(data.body.results)
+            setNextPage(data.body.next)
+            setPreviousPage(data.body.previous)
+            //console.log(data.body.previous);
         })
         .catch(async (error) => {
             alert(error.message)
@@ -103,6 +133,31 @@ const GameZoo = () => {
                     
                 }
             </section>
+
+            <div style={{textAlign: 'center'}}>
+                {
+                    previousPage === null ? 
+                    <></> :
+                    <button 
+                        className='previous-page' 
+                        onClick={handlePreviousPage}
+                    >
+                        Previous Page
+                    </button>
+                }
+                
+                {
+                    nextPage === null ? 
+                    <></> :
+                    <button 
+                        className='next-page' 
+                        onClick={handleNextPage}
+                    >
+                       Next Page
+                    </button>
+                }
+            </div>
+            
         </div>
     );
 };
