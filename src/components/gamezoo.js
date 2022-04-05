@@ -1,7 +1,7 @@
 import './gamezoo.css'
 import { useState, useEffect } from 'react';
 import request from 'superagent';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Pagination from "react-js-pagination";
 
 const GameZoo = () => {
@@ -10,6 +10,8 @@ const GameZoo = () => {
         width: '100%',
         height: '100vh',
     };
+
+    let params = useParams();
 
     const [searchItem, setSearchItem] = useState('')
 
@@ -97,7 +99,9 @@ const GameZoo = () => {
     }
 
     useEffect(() => {
-        defaultGame()
+        if (params.search === undefined) return defaultGame()
+        addGames(params.search)
+        setSearchItem(params.search)
     }, [])
     
     

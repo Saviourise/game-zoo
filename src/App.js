@@ -13,6 +13,7 @@ function App() {
         <Route path='/' exact element={<LandingPage />} />
         <Route path='/game-arena' exact element={<GameArena />} />
         <Route path='/game-zoo' exact element={<GameZoo />} />
+        <Route path='/game-zoo/search/:search' exact element={<GameZoo />} />
         <Route path='/game-zoo/:slug' element={<GameDatail />} />
         <Route path='/*' element={<Page404 />} />
       </Routes>

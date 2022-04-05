@@ -7,12 +7,13 @@ import gamezoologo from'../assets/gamezoologo.png'
 import AnimatedPage1 from './animatedPage1';
 import AnimatedPage2 from './animatedPage2';
 import AboutPage from './about';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function LandingPage() {
 
+    let navigate = useNavigate();
+
     const [searchValue, setSearchValue] = useState('')
-    const [gamesInfo, setGamesInfo] = useState([])
 
     const updateSearchValue = (e) => {
         setSearchValue(e.target.value);
@@ -20,6 +21,8 @@ function LandingPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        //console.log(searchValue);
+        return navigate(`/game-zoo/search/${searchValue}`)
     }
 
     const openNav = () => {
