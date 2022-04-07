@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './landingPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBarsStaggered, faSearch } from '@fortawesome/free-solid-svg-icons'
-import request from 'superagent';
 import gamezoologo from'../assets/gamezoologo.png'
 import AnimatedPage1 from './animatedPage1';
 import AnimatedPage2 from './animatedPage2';

@@ -2,6 +2,8 @@ import './gameDetail.css'
 import { useState, useEffect } from 'react';
 import request from 'superagent';
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const GameDatail = () => {
         
@@ -28,7 +30,7 @@ const GameDatail = () => {
             setgameGenres(data.body.genres)
             setgameTags(data.body.tags)
             setgamePlatforms(data.body.platforms)
-            //console.log(data.body)
+            //console.log(data.body.platforms)
         })
         .catch(async (error) => {
             alert(error.message)
@@ -36,7 +38,7 @@ const GameDatail = () => {
     }
 
     const getTrailer = () => {
-        const gameName = params.slug + " trailer";
+        const gameName = params.slug + " official trailer";
         //console.log(gameName)
         request
         .get("https://www.googleapis.com/youtube/v3/search")
@@ -59,20 +61,42 @@ const GameDatail = () => {
     
 
     return (
+        <>
+            {
+                Object.keys(gameDetail).length === 0 ? 
+                    <section className='nothing-yet'>
+                        <div className='loading'></div>
+                        <div style={{marginTop: 10,}}>Loading</div>
+                    </section> : 
+                    <GameDetails 
+                        name={gameDetail.name} 
+                        genres={gameGenres} 
+                        des={gameDetail.description_raw}
+                        platforms={gamePlatforms}
+                        tags={gameTags}
+                        rating={gameDetail.rating}
+                        website={gameDetail.website}
+                        gameVids={gameVids}
+                    />
+            }
+        </>
+    )
+}
+
+const GameDetails = (props) => {
+    return (
         <div className='game-detail-container'>
             
             <div className='details-con'>
                 <h2 className='game-name'>
-                    {
-                        gameDetail.name
-                    }
+                    {props.name}
                 </h2>
                 <p className='game-genre'>
                     <span className='genre'>
                         Genre: 
                     </span>
                     {
-                        gameGenres.map((gen, i) => {
+                        props.genres.map((gen, i) => {
                             return (
                                 <span key={i} className='genres'>{gen.name}, </span>
                             )
@@ -80,11 +104,11 @@ const GameDatail = () => {
                     }
                 </p>
                 <p className='des'>Description</p>
-                <p className='game-des'>{gameDetail.description_raw}</p>
+                <p className='game-des'>{props.des}</p>
 
                 <p className='des'>Operating Systems</p>
                 {
-                    gamePlatforms.map((platform, i) => {
+                    props.platforms.map((platform, i) => {
                         return (
                             <details key={i}>
                                 <summary>{platform.platform.name}</summary>
@@ -99,7 +123,7 @@ const GameDatail = () => {
                         Tags: 
                     </span>
                     {
-                        gameTags.map((tag, i) => {
+                        props.tags.map((tag, i) => {
                             return (
                                 <span key={i} className='tags'>{tag.name.replace('-', ' ')}</span>
                             )
@@ -112,7 +136,7 @@ const GameDatail = () => {
 
                 
                 <iframe className='videosFrame'
-                    src={`https://www.youtube.com/embed/${gameVids}`}
+                    src={`https://www.youtube.com/embed/${props.gameVids}`}
                     allowFullScreen="allowfullscreen"
                     frameBorder="0"
                 >
@@ -123,12 +147,15 @@ const GameDatail = () => {
                     <span className='rating'> 
                         Rating: 
                     </span>
-                    {gameDetail.rating === 0 ? <>None</> : <>{gameDetail.rating} / 5</>}
+                    {props.rating === 0 ? <>None</> : <>{props.rating} / 5</>}
                 </p>
                 <p className='website'>
-                    <a className='website' href={`${gameDetail.website}`} target='_blank'>
-                        Go to website
-                    </a>                   
+                    <button className='web-btn'>
+                        <FontAwesomeIcon style={{color: '#fff', marginRight: 10}} icon={faPaperPlane} />
+                        <a className='website' href={`${props.website}`} target='_blank'>
+                            Go to website
+                        </a>     
+                    </button>              
                 </p>
             </div>
         </div>

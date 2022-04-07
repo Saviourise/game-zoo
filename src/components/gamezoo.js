@@ -58,7 +58,7 @@ const GameZoo = () => {
         }
 
         if (searchValue != '') {
-            navigate(`/game-zoo/search/${searchValue}`)
+            //navigate(`/game-zoo/search/${searchValue}`)
             addGames(searchValue)
         }
         
@@ -106,8 +106,9 @@ const GameZoo = () => {
 
     useEffect(() => {
         if (params.search === undefined) return defaultGame()
-        addGames(params.search)
+
         setSearchItem(params.search)
+        addGames(params.search)
     }, [])
     
     
@@ -121,7 +122,7 @@ const GameZoo = () => {
             {
                 searchItem.length != 0 ?
                 <h2 className='result-header'>Search Result For {searchItem}</h2>
-                : <></>
+                : <h2 className='result-header'>All Games</h2>
             }
             
             <section className='games-list-container'>

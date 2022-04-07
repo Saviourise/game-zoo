@@ -84,6 +84,7 @@ function GameArena() {
         ];
 
         setGames(gamesArray);
+        setFilteredGames(gamesArray);
     }
     
 
@@ -96,7 +97,7 @@ function GameArena() {
 
         if (searchValue === '') {
             setEmpty('Uh Oh! This Place Is Empty!!')
-            return setFilteredGames([])
+            return setFilteredGames(games);
         }
 
 
@@ -122,7 +123,7 @@ function GameArena() {
             {
                 searchItem.length != 0 ?
                 <h2 className='result-header'>Search Result For {searchItem}</h2>
-                : <></>
+                : <h2 className='result-header'>All Games</h2>
             }
             
             <section className='games-list-container'>

@@ -92,7 +92,7 @@
 
 .loader {
     border: 10px solid #f3f3f3; /* Light grey */
-    border-top: 10px solid #D95BA0; /* Blue */
+    border-top: 10px solid #D95BA0; 
     border-radius: 50%;
     width: 100px;
     height: 100px;
