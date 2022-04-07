@@ -12,6 +12,7 @@ const GameDatail = () => {
     const [gameTags, setgameTags] = useState([])
     const [gamePlatforms, setgamePlatforms] = useState([])
     const [gameVids, setgameVids] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
     let params = useParams();
 
@@ -33,7 +34,7 @@ const GameDatail = () => {
             //console.log(data.body.platforms)
         })
         .catch(async (error) => {
-            alert(error.message)
+            setErrorMessage(error.message)
         })
     }
 
@@ -49,8 +50,8 @@ const GameDatail = () => {
         .then((datavid) => {
             setgameVids(datavid.body.items[0].id.videoId)
         })
-        .catch(async (_error) => {
-            alert(_error.message)
+        .catch(async (error) => {
+            setErrorMessage(error.message)
         })
     }
 
@@ -65,8 +66,16 @@ const GameDatail = () => {
             {
                 Object.keys(gameDetail).length === 0 ? 
                     <section className='nothing-yet'>
-                        <div className='loading'></div>
-                        <div style={{marginTop: 10,}}>Loading</div>
+                        {
+                            errorMessage === '' ?
+                                <>
+                                    <div className='loading'></div>
+                                    <div style={{marginTop: 10,}}>Loading</div>
+                                </> :
+                                <div>{errorMessage}</div>
+                                
+                        }
+                        
                     </section> : 
                     <GameDetails 
                         name={gameDetail.name} 

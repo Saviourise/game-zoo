@@ -22,6 +22,8 @@ const GameZoo = () => {
 
     const [games, setGames] = useState([])
 
+    const [errorMessage, setErrorMessage] = useState('')
+
     const addGames = (item) => {
         request
         .get("https://rawg.io/api/games")
@@ -35,7 +37,7 @@ const GameZoo = () => {
             //console.log(data.body.results)
         })
         .catch(async (error) => {
-            alert(error.message)
+            setErrorMessage(error.message)
         })
     }
     
@@ -83,7 +85,7 @@ const GameZoo = () => {
             //console.log(data.body);
         })
         .catch(async (error) => {
-            alert(error.message)
+            setErrorMessage(error.message)
         })
     }
 
@@ -100,7 +102,7 @@ const GameZoo = () => {
             //console.log(data.body.previous);
         })
         .catch(async (error) => {
-            alert(error.message)
+            setErrorMessage(error.message)
         })
     }
 
@@ -142,10 +144,19 @@ const GameZoo = () => {
                             
                         )
                     }) : 
-                        <section className='nothing'>
-                            <div className='loader'></div>
-                        </section>
-                    
+                        <>
+                            {
+                                errorMessage === '' ? 
+                                    <section className='nothing'>
+                                        <div className='loader'></div>
+                                    </section> : 
+                                    <section className='nothing'>
+                                    {errorMessage}
+                                    </section>
+
+                            }
+                            
+                        </>
                 }
             </section>
 
