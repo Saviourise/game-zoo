@@ -8,6 +8,8 @@ const GameZoo = () => {
     const container = {
         width: '100%',
         height: '100vh',
+        backgroundColor: 'black',
+        overflowY: 'scroll',
     };
 
     let params = useParams();
@@ -134,10 +136,12 @@ const GameZoo = () => {
                         return (
                             
                             <section className='game-card' key={game.id}>
-                                <Link to={`/game-zoo/${game.slug}`}>
+                                <Link
+                                    to={ `/game-zoo/${ game.slug }` }
+                                >
                                     <img className='imageFrame' src={game.background_image} />
                                     <div className='desc'>
-                                        <h4 className="h4">{game.name}</h4>
+                                        <h4 className="h4" style={{textDecoration: 'none'}}>{game.name}</h4>
                                     </div>
                                 </Link>
                             </section>

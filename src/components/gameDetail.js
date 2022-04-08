@@ -2,7 +2,7 @@ import './gameDetail.css'
 import { useState, useEffect } from 'react';
 import request from 'superagent';
 import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const GameDatail = () => {
@@ -31,7 +31,7 @@ const GameDatail = () => {
             setgameGenres(data.body.genres)
             setgameTags(data.body.tags)
             setgamePlatforms(data.body.platforms)
-            //console.log(data.body.platforms)
+            //console.log(data)
         })
         .catch(async (error) => {
             setErrorMessage(error.message)
