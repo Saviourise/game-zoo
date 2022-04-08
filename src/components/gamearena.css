@@ -10,37 +10,9 @@
 .game-arena-container {
     width: 100%;
     background-color: black;
-}
-
-.game-arena-header {
-    width: 100%;
-    height: 10vh;
+    height: 100vh;
     background-color: black;
-    padding: 0px 20px;
-    display: flex;
-}
-
-.game-arena-header-name {
-    color: white;
-    font-size: 20px;
-    flex: 70%;
-}
-
-.game-arena-header-search-input {
-    flex: 30%;
-    padding: 0px 10px;
-    height: 30px;
-    width: 40%;
-    border: none;
-    outline: none;
-    background: none;
-    color: white;
-}
-
-.game-arena-header-search-input:hover {
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #D95BA0;
+    overflow-y: scroll;
 }
 
 .games-list-container {
@@ -84,7 +56,8 @@
 .videoFrame {
     width: 100%;
     height: 30vh;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .result-header {

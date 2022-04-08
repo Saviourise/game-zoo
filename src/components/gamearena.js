@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
-import './gamearena.css'
+import './gamearena.css';
+import NavBar from './navBar';
 
-function GameArena() {
+function GameArena ()
+{
 
-    const [searchItem, setSearchItem] = useState('')
+    const [ searchItem, setSearchItem ] = useState( '' );
 
-    const [games, setGames] = useState([])
+    const [ games, setGames ] = useState( [] );
 
-    const [filteredGames, setFilteredGames] = useState([])
+    const [ filteredGames, setFilteredGames ] = useState( [] );
 
-    const [empty, setEmpty] = useState('Uh Oh! This Place Is Empty!!')
+    const [ empty, setEmpty ] = useState( 'Uh Oh! This Place Is Empty!!' );
 
-    useEffect(() => {
-      addGames();
-    }, [])
+    useEffect( () =>
+    {
+        addGames();
+    }, [] );
 
-    const addGames = () => {
+    const addGames = () =>
+    {
         const gamesArray = [
             {
                 gameName: 'PES 2022',
@@ -83,74 +87,75 @@ function GameArena() {
             },
         ];
 
-        setGames(gamesArray);
-        setFilteredGames(gamesArray);
-    }
-    
+        setGames( gamesArray );
+        setFilteredGames( gamesArray );
+    };
 
-    const handleChange = (e) => {
+
+    const handleChange = ( e ) =>
+    {
         let searchValue = e.target.value;
 
-        setSearchItem(searchValue);
+        setSearchItem( searchValue );
 
         searchValue = searchValue.toLowerCase();
 
-        if (searchValue === '') {
-            setEmpty('Uh Oh! This Place Is Empty!!')
-            return setFilteredGames(games);
+        if ( searchValue === '' )
+        {
+            setEmpty( 'Uh Oh! This Place Is Empty!!' );
+            return setFilteredGames( games );
         }
 
 
-        searchValue = searchValue.replaceAll(' ', '')
-        const filtered = games.filter(value => {
-            return value.gameName.toLowerCase().replaceAll(' ', '').replaceAll('\'', '').match(new RegExp(searchValue, 'g'))
-        })
+        searchValue = searchValue.replaceAll( ' ', '' );
+        const filtered = games.filter( value =>
+        {
+            return value.gameName.toLowerCase().replaceAll( ' ', '' ).replaceAll( '\'', '' ).match( new RegExp( searchValue, 'g' ) );
+        } );
 
-        setFilteredGames(filtered)
+        setFilteredGames( filtered );
 
-        setEmpty(`Could not find item \'${e.target.value}\'!`)
+        setEmpty( `Could not find item \'${ e.target.value }\'!` );
 
         //console.log(filtered);
-    }
+    };
 
     return (
         <div className='game-arena-container'>
-            <header className='game-arena-header'>
-                <span className='game-arena-header-name'><span style={{color: '#D95BA0'}}>Game</span> Arena</span>
-                <input className='game-arena-header-search-input' value={searchItem} onChange={handleChange} type='search' placeholder='Search for games'/>
-            </header>
+            <NavBar searchItem={ searchItem } handleChange={ handleChange } gameArena />
 
             {
                 searchItem.length != 0 ?
-                <h2 className='result-header'>Search Result For {searchItem}</h2>
-                : <h2 className='result-header'>All Games</h2>
+                    <h2 className='result-header'>Search Result For { searchItem }</h2>
+                    : <h2 className='result-header'>All Games</h2>
             }
-            
+
             <section className='games-list-container'>
                 {
                     filteredGames.length != 0 ?
-                    filteredGames.map((game, i) => {
-                        return (
-                            <section className='game-card' key={i}>
-                                <iframe className='videoFrame'
-                                    src={`https://www.youtube.com/embed/${game.gameVideoId}`}
-                                    allowFullScreen="allowfullscreen"
-                                    frameBorder="0"
-                                >
-                                </iframe>
-                                <div className='desc'>
-                                    <h4 className="h4">{game.gameName}</h4>
-                                </div>
-                            </section>
-                        )
-                    }) : 
-                        <section className='nothing'>{empty}</section>
-                    
+                        filteredGames.map( ( game, i ) =>
+                        {
+                            return (
+                                <section className='game-card' key={ i }>
+                                    <iframe className='videoFrame'
+                                        src={ `https://www.youtube.com/embed/${ game.gameVideoId }` }
+                                        allowFullScreen="allowfullscreen"
+                                        frameBorder="0"
+                                    >
+                                    </iframe>
+                                    <div className='desc'>
+                                        <h4 className="h4">{ game.gameName }</h4>
+                                    </div>
+                                </section>
+                            );
+                        } ) :
+                        <section className='nothing'>{ empty }</section>
+
                 }
             </section>
         </div>
-    )
-    
+    );
+
 }
 
 export default GameArena;

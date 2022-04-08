@@ -39,7 +39,7 @@ const GameDatail = () => {
     }
 
     const getTrailer = () => {
-        const gameName = params.slug + " official trailer";
+        const gameName = params.slug + " game official trailer";
         //console.log(gameName)
         request
         .get("https://www.googleapis.com/youtube/v3/search")
