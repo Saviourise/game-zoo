@@ -27,7 +27,7 @@ const NavBar = ( props ) =>
     const openNavBar = () =>
     {
         document.querySelector( '.phone-header-nav' ).style.width = '60%';
-        document.querySelector( '.overlay' ).style.opacity = '.8';
+        document.querySelector( '.overlaym ' ).style.opacity = '.8';
         document.querySelector( '.overlay' ).style.width = '100%';
         document.querySelector( '.header-header-phone' ).style.marginTop = '-70px';
     };
