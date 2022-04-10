@@ -69,17 +69,50 @@
 }
 
 .loader {
-    border: 10px solid #f3f3f3; /* Light grey */
-    border-top: 10px solid #D95BA0; 
+    font-size: 10px;
+    margin: 260px auto;
+    width: 70px;
+    justify-content: center;
+    display: flex;
+    height: 70px;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    animation: spin 2s linear infinite;
+    background: -webkit-linear-gradient(left, #D95BA0 10%, #111 42%);
+    position: relative;
+    animation: load 1.4s infinite ease-in-out;
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+  .loader::before {
+    content: '';
+    width: 50%;
+    height: 50%;
+    background: #D95BA0;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .loader::after {
+    background: #111;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  @keyframes load {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
 .desc {

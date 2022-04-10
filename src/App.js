@@ -4,9 +4,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Page404 from "./components/404page";
 import GameZoo from "./components/gamezoo";
 import GameDatail from "./components/gameDetail";
+import { useEffect } from "react";
 
 
-function App() {
+function App ()
+{
+  useEffect( () =>
+  {
+    document.querySelector( '.load-com' ).style.display = 'none';
+  }, [])
   return (
     <Router className="App">
       <Routes>

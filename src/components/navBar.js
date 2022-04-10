@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBarsStaggered, faSearch } from '@fortawesome/free-solid-svg-icons';
+import gamezoologo from '../assets/gamezoologo.png';
 
 const NavBar = ( props ) =>
 {
@@ -27,16 +28,18 @@ const NavBar = ( props ) =>
     const openNavBar = () =>
     {
         document.querySelector( '.phone-header-nav' ).style.width = '60%';
-        document.querySelector( '.overlaym ' ).style.opacity = '.8';
-        document.querySelector( '.overlay' ).style.width = '100%';
+        document.querySelector( '.phone-header-nav' ).style.padding = '20px';
+        document.querySelector( '.overlay-nav ' ).style.opacity = '.8';
+        document.querySelector( '.overlay-nav' ).style.width = '100%';
         document.querySelector( '.header-header-phone' ).style.marginTop = '-70px';
     };
 
     const closeNavBar = () =>
     {
         document.querySelector( '.phone-header-nav' ).style.width = '0';
-        document.querySelector( '.overlay' ).style.opacity = '0';
-        document.querySelector( '.overlay' ).style.width = '0';
+        document.querySelector( '.phone-header-nav' ).style.padding = '0px';
+        document.querySelector( '.overlay-nav' ).style.opacity = '0';
+        document.querySelector( '.overlay-nav' ).style.width = '0';
         document.querySelector( '.header-header-phone' ).style.marginTop = '0';
     };
 
@@ -44,7 +47,7 @@ const NavBar = ( props ) =>
     {
         if ( props.gameArena ) return setGameWhat( 'Arena' );
         if ( props.gameZoo ) return setGameWhat( 'Zoo' );
-    }, [props.gameZoo, props.gameArena] );
+    }, [ props.gameZoo, props.gameArena ] );
 
     useEffect( () =>
     {
@@ -54,15 +57,16 @@ const NavBar = ( props ) =>
             {
                 setBlackNav( true );
             } else setBlackNav( false );
-        }, true)
-        return () => {
-            window.removeEventListener('scroll')
+        }, true );
+        return () =>
+        {
+            window.removeEventListener( 'scroll' );
         };
-    }, []);
+    }, [] );
 
     return (
         <>
-            <header className={`header-header-desktop ${blackNav && "nav-black"}`}>
+            <header className={ `header-header-desktop ${ blackNav && "nav-black" }` }>
                 <span className='header-header-name'><span style={ { color: '#D95BA0' } }>Game</span> { gameWhat }</span>
                 <input className='header-header-search-input' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
                 <nav className='header-nav'>
@@ -99,7 +103,7 @@ const NavBar = ( props ) =>
             </header>
 
 
-            <header className={`header-header-phone-head ${blackNav && "nav-black"}`}>
+            <header className={ `header-header-phone-head ${ blackNav && "nav-black" }` }>
 
                 <div className='input-con'>
                     <input className='header-header-phone-search-input' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
@@ -108,6 +112,9 @@ const NavBar = ( props ) =>
 
                 <div className='phone-header-nav'>
                     <nav className='header-phone-nav'>
+                        <p className='header-phone-nav-bar-logo'>
+                            <img src={ gamezoologo } alt='logo' className='header-phone-logo' />
+                        </p>
                         <Link to='/' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
                             Home
                         </Link>
@@ -146,7 +153,7 @@ const NavBar = ( props ) =>
                 </div>
             </header>
 
-            <div className='overlay' onClick={closeNavBar}>
+            <div className='overlay-nav' onClick={ closeNavBar }>
 
             </div>
         </>
