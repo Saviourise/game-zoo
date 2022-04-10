@@ -195,6 +195,9 @@
         height: auto;
         cursor: pointer;
     }
+    .fadeBottom {
+        margin-top: -60px;
+    }
     .phone-nav {
         width: 100%;
         flex: 10%;
