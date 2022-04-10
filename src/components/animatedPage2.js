@@ -53,7 +53,7 @@ function AnimatedPage2() {
                             <p className='text-p-2'>GENRE: <span className="text-p-2-span">ACTION</span></p>
                         </div>
                         <div className='image'>
-                            <img src={img1} className="img-animated-2-1"/>
+                            <img src={img1} className="img-animated-2-1" alt='' />
                         </div>
                     </div>
                     <div className="big-text-2 big-text">
@@ -62,7 +62,7 @@ function AnimatedPage2() {
                             <p className='text-p-2'>GENRE: <span className="text-p-2-span">ACTION</span></p>
                         </div>
                         <div className='image'>
-                            <img src={img2} className="img-animated-2-2"/>
+                            <img src={img2} className="img-animated-2-2" alt=''/>
                         </div>
                     </div>
                     <div className="big-text-3 big-text">
@@ -71,7 +71,7 @@ function AnimatedPage2() {
                             <p className='text-p-2'>GENRE: <span className="text-p-2-span">ACTION</span></p>
                         </div>
                         <div className='image'>
-                            <img src={img3} className="img-animated-2-3"/>
+                            <img src={img3} className="img-animated-2-3" alt=''/>
                         </div>
                     </div>
                     

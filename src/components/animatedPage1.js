@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import './animatePage1.css'
 import { scroller } from "react-scroll";
 import char from '../assets/gamezone_Images/nier char.png'

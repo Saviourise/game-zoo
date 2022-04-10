@@ -115,7 +115,7 @@ function GameArena ()
 
         setFilteredGames( filtered );
 
-        setEmpty( `Could not find item \'${ e.target.value }\'!` );
+        setEmpty( `Could not find item '${ e.target.value }'!` );
 
         //console.log(filtered);
     };
@@ -125,14 +125,14 @@ function GameArena ()
             <NavBar searchItem={ searchItem } handleChange={ handleChange } gameArena />
 
             {
-                searchItem.length != 0 ?
+                searchItem.length !== 0 ?
                     <h2 className='result-header'>Search Result For { searchItem }</h2>
                     : <h2 className='result-header'>All Games</h2>
             }
 
             <section className='games-list-container'>
                 {
-                    filteredGames.length != 0 ?
+                    filteredGames.length !== 0 ?
                         filteredGames.map( ( game, i ) =>
                         {
                             return (
@@ -141,6 +141,7 @@ function GameArena ()
                                         src={ `https://www.youtube.com/embed/${ game.gameVideoId }` }
                                         allowFullScreen="allowfullscreen"
                                         frameBorder="0"
+                                        title={i}
                                     >
                                     </iframe>
                                     <div className='desc'>

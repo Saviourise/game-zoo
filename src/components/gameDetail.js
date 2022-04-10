@@ -148,6 +148,7 @@ const GameDetails = (props) => {
                     src={`https://www.youtube.com/embed/${props.gameVids}`}
                     allowFullScreen="allowfullscreen"
                     frameBorder="0"
+                    title={props.name}
                 >
                 </iframe>
 

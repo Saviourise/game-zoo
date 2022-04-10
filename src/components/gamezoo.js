@@ -9,9 +9,9 @@ const GameZoo = () =>
 
     const container = {
         width: '100%',
-        height: '100vh',
-        backgroundColor: 'black',
-        overflowY: 'scroll',
+        backgroundColor: '#111',
+        paddingTop: 60,
+        zIndex: 1000,
     };
 
     let params = useParams();
@@ -68,7 +68,7 @@ const GameZoo = () =>
             return setGames( [] );
         }
 
-        if ( searchValue != '' )
+        if ( searchValue !== '' )
         {
             //navigate(`/game-zoo/search/${searchValue}`)
             addGames( searchValue );
@@ -130,7 +130,7 @@ const GameZoo = () =>
 
         setSearchItem( params.search );
         addGames( params.search );
-    }, [] );
+    }, [ params.search ] );
 
 
     return (
@@ -141,14 +141,14 @@ const GameZoo = () =>
             </header> */}
             <NavBar searchItem={ searchItem } handleChange={ handleChange } gameZoo />
             {
-                searchItem.length != 0 ?
+                searchItem.length !== 0 ?
                     <h2 className='result-header'>Search Result For { searchItem }</h2>
                     : <h2 className='result-header'>All Games</h2>
             }
 
             <section className='games-list-container'>
                 {
-                    games.length != 0 ?
+                    games.length !== 0 ?
                         games.map( ( game ) =>
                         {
                             return (
@@ -157,7 +157,7 @@ const GameZoo = () =>
                                     <Link
                                         to={ `/game-zoo/${ game.slug }` }
                                     >
-                                        <img className='imageFrame' src={ game.background_image } />
+                                        <img className='imageFrame' src={ game.background_image } alt={ game.name } />
                                         <div className='desc'>
                                             <h4 className="h4" style={ { textDecoration: 'none' } }>{ game.name }</h4>
                                         </div>
