@@ -20,113 +20,113 @@ function AnimatedPage1() {
     const [direction, setDirection] = useState('')
     let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop
 
-    // const itemInView = (element, offset = 0) => {
-    //     if(!element) return;
-    //     const itemTop = element.getBoundingClientRect().top;
-    //     return (
-    //         itemTop <= ((window.innerHeight || document.documentElement.clientHeight) - offset)
-    //     );
-    // };
+    const itemInView = (element, offset = 0) => {
+        if(!element) return;
+        const itemTop = element.getBoundingClientRect().top;
+        return (
+            itemTop <= ((window.innerHeight || document.documentElement.clientHeight) - offset)
+        );
+    };
 
     const more1 = () => {
-        animatedElement.current.style.transform = `rotateX(0deg)`
-        animatedElement.current.style.backgroundImage = 'url(' + character1bg + ')';
-        document.querySelector("#box1").style.backgroundRepeat = "no-repeat";
-        document.querySelector("#box1").style.backgroundSize = "cover";
-        animatedElement.current.style.transform = `scale(1.5)`
-        img1.current.style.marginTop = '0px'
-        img1.current.style.opacity = '0'
+        // animatedElement.current.style.transform = `rotateX(0deg)`
+        // animatedElement.current.style.backgroundImage = 'url(' + character1bg + ')';
+        // document.querySelector("#box1").style.backgroundRepeat = "no-repeat";
+        // document.querySelector("#box1").style.backgroundSize = "cover";
+        // animatedElement.current.style.transform = `scale(1.5)`
+        // img1.current.style.marginTop = '0px'
+        // img1.current.style.opacity = '0'
     }
 
-    // const handleScrollAnimation = () => {
-    //     animatedElement.current.style.transform = `rotateX(40deg)`
-    //     img1.current.style.marginTop = '-100px'
-    //     clearInterval(aniInt)
-    //     aniInt = 0;
-    // }
+    const handleScrollAnimation = () => {
+        animatedElement.current.style.transform = `rotateX(40deg)`
+        img1.current.style.marginTop = '-120px'
+        clearInterval(aniInt)
+        aniInt = 0;
+    }
 
-    // const handleScrollAnimation2 = () => {
-    //     animatedElement2.current.style.transform = `rotateX(40deg)`
-    //     img2.current.style.marginTop = '-110px'
-    //     clearInterval(aniInt)
-    //     aniInt = 0;
-    // }
+    const handleScrollAnimation2 = () => {
+        animatedElement2.current.style.transform = `rotateX(40deg)`
+        img2.current.style.marginTop = '-130px'
+        clearInterval(aniInt)
+        aniInt = 0;
+    }
 
-    // const handleScrollAnimation3 = () => {
-    //     animatedElement3.current.style.transform = `rotateX(40deg)`
-    //     img3.current.style.marginTop = '-196px'
-    //     clearInterval(aniInt)
-    //     aniInt = 0;
-    // }
+    const handleScrollAnimation3 = () => {
+        animatedElement3.current.style.transform = `rotateX(40deg)`
+        img3.current.style.marginTop = '-216px'
+        clearInterval(aniInt)
+        aniInt = 0;
+    }
 
-    // const handleScrollUpAnimation = () => {
-    //     if (itemInView(animatedElement.current, -100)) {
-    //         animatedElement.current.style.transform = `rotateX(0deg)`
-    //         img1.current.style.marginTop = '-55px'
-    //     }
-    // }
+    const handleScrollUpAnimation = () => {
+        if (itemInView(animatedElement.current, -100)) {
+            animatedElement.current.style.transform = `rotateX(0deg)`
+            img1.current.style.marginTop = '-55px'
+        }
+    }
 
-    // const handleScrollUpAnimation2 = () => {
-    //     if (itemInView(animatedElement2.current, -100)) {
-    //         animatedElement2.current.style.transform = `rotateX(0deg)`
-    //         img2.current.style.marginTop = '-65px'
-    //     }
-    // }
+    const handleScrollUpAnimation2 = () => {
+        if (itemInView(animatedElement2.current, -100)) {
+            animatedElement2.current.style.transform = `rotateX(0deg)`
+            img2.current.style.marginTop = '-65px'
+        }
+    }
 
-    // const handleScrollUpAnimation3 = () => {
-    //     if (itemInView(animatedElement3.current, -100)) {
-    //         animatedElement3.current.style.transform = `rotateX(0deg)`
-    //         img3.current.style.marginTop = '-157px'
-    //     }
-    // }
+    const handleScrollUpAnimation3 = () => {
+        if (itemInView(animatedElement3.current, -100)) {
+            animatedElement3.current.style.transform = `rotateX(0deg)`
+            img3.current.style.marginTop = '-157px'
+        }
+    }
     
-    // let aniInt = null;
+    let aniInt = null;
     
     
-    // aniInt = setInterval(() => {
-    //     if(!page.current) return
-    //     if(!page2.current) return
-    //     const itemDim = page.current.getBoundingClientRect();
-    //     const itemDim2 = page2.current.getBoundingClientRect();
-    //     const itemDim3 = page3.current.getBoundingClientRect();
-    //     if (itemDim.top == window.innerHeight) {
-    //         // console.log("in port")
-    //         handleScrollUpAnimation()
-    //         animatedElement.current.style.transform = 'skew(0deg)';
-    //         animatedElement2.current.style.transform = 'skew(0deg)';
-    //     }
-    //     if(itemDim.top < parseInt(window.innerHeight/2) && itemDim.top > 0-(window.innerHeight/2)) {
-    //         handleScrollAnimation()
-    //     } else {
-    //         handleScrollUpAnimation()
-    //     }
+    aniInt = setInterval(() => {
+        if(!page.current) return
+        if(!page2.current) return
+        const itemDim = page.current.getBoundingClientRect();
+        const itemDim2 = page2.current.getBoundingClientRect();
+        const itemDim3 = page3.current.getBoundingClientRect();
+        if (itemDim.top == window.innerHeight) {
+            // console.log("in port")
+            handleScrollUpAnimation()
+            animatedElement.current.style.transform = 'skew(0deg)';
+            animatedElement2.current.style.transform = 'skew(0deg)';
+        }
+        if(itemDim.top < parseInt(window.innerHeight/2) && itemDim.top > 0-(window.innerHeight/2)) {
+            handleScrollAnimation()
+        } else {
+            handleScrollUpAnimation()
+        }
 
-    //     if(itemDim2.top < parseInt(window.innerHeight/2) && itemDim2.top > 0-(window.innerHeight/2)) {
-    //         //console.log("in port")
-    //         handleScrollAnimation2()
-    //     } else {
-    //         //console.log("not in port")
-    //         handleScrollUpAnimation2()
-    //     }
+        if(itemDim2.top < parseInt(window.innerHeight/2) && itemDim2.top > 0-(window.innerHeight/2)) {
+            //console.log("in port")
+            handleScrollAnimation2()
+        } else {
+            //console.log("not in port")
+            handleScrollUpAnimation2()
+        }
 
-    //     if(itemDim3.top < parseInt(window.innerHeight/2) && itemDim3.top > 0-(window.innerHeight/2)) {
-    //         handleScrollAnimation3()
-    //     } else {
-    //         handleScrollUpAnimation3()
-    //     }
-    // }, 100);
+        if(itemDim3.top < parseInt(window.innerHeight/2) && itemDim3.top > 0-(window.innerHeight/2)) {
+            handleScrollAnimation3()
+        } else {
+            handleScrollUpAnimation3()
+        }
+    }, 100);
     
-    // window.addEventListener('scroll', () => {
-    //     let st = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener('scroll', () => {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
         
 
-    //     if(st > lastScrollTop) {
-    //         setDirection('down')
-    //     } else {
-    //         setDirection('up')
-    //     }
-    //     lastScrollTop = st <= 0 ? 0 : st;
-    // }, false)
+        if(st > lastScrollTop) {
+            setDirection('down')
+        } else {
+            setDirection('up')
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+    }, false)
 
     return (
         <>

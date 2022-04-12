@@ -9,6 +9,7 @@
     left: 0;
     width: 100%;
     transition: all 1s;
+    z-index: 100000;
 }
 
 .header-nav {
@@ -23,6 +24,7 @@
     color: white;
     font-size: 20px;
     flex: 15%;
+    cursor: default;
 }
 
 .header-header-search-input {
@@ -52,7 +54,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    transition: all 1s;
+    transition: all .5s;
     z-index: 10000;
 }
 

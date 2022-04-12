@@ -12,16 +12,16 @@ function App ()
   useEffect( () =>
   {
     document.querySelector( '.load-com' ).style.display = 'none';
-  }, [])
+  }, [] );
   return (
-    <Router className="App">
+    <Router className="App" style={ { background: '#111' } }>
       <Routes>
-        <Route path='/' exact element={<LandingPage />} />
-        <Route path='/game-arena' exact element={<GameArena />} />
-        <Route path='/game-zoo' exact element={<GameZoo />} />
-        <Route path='/game-zoo/search/:search' exact element={<GameZoo />} />
-        <Route path='/game-zoo/:slug' element={<GameDatail />} />
-        <Route path='/*' element={<Page404 />} />
+        <Route path='/' exact element={ <LandingPage /> } />
+        <Route path='/game-arena' exact element={ <GameArena /> } />
+        <Route path='/game-zoo' exact element={ <GameZoo /> } />
+        <Route path='/game-zoo/search/:search' exact element={ <GameZoo /> } />
+        <Route path='/game-zoo/:slug' element={ <GameDatail /> } />
+        <Route path='/*' element={ <Page404 /> } />
       </Routes>
     </Router>
   );

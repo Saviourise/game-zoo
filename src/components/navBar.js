@@ -57,7 +57,7 @@ const NavBar = ( props ) =>
             {
                 setBlackNav( true );
             } else setBlackNav( false );
-        }, true );
+        }, );
         return () =>
         {
             window.removeEventListener( 'scroll' );
@@ -68,7 +68,7 @@ const NavBar = ( props ) =>
         <>
             <header className={ `header-header-desktop ${ blackNav && "nav-black" }` }>
                 <span className='header-header-name'><span style={ { color: '#D95BA0' } }>Game</span> { gameWhat }</span>
-                <input className='header-header-search-input' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
+                <input className='header-header-search-input' value={ props.searchItem } onChange={ props.handleChange } maxLength='25' type='search' placeholder='Search for games' />
                 <nav className='header-nav'>
                     <Link to='/' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item active'>
                         Home
@@ -106,7 +106,7 @@ const NavBar = ( props ) =>
             <header className={ `header-header-phone-head ${ blackNav && "nav-black" }` }>
 
                 <div className='input-con'>
-                    <input className='header-header-phone-search-input' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
+                    <input className='header-header-phone-search-input' maxLength='25' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
                     <button className='input-btn' onClick={ closeSearch }>Close</button>
                 </div>
 

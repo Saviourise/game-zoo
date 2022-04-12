@@ -7,6 +7,7 @@ import NavBar from './navBar';
 const GameZoo = () =>
 {
 
+    // game zoo container style
     const container = {
         width: '100%',
         backgroundColor: '#111',
@@ -14,20 +15,28 @@ const GameZoo = () =>
         zIndex: 1000,
     };
 
+    // router url parameter
     let params = useParams();
 
+    // router navigate function
     let navigate = useNavigate();
 
+    // state for the item in the search bar
     const [ searchItem, setSearchItem ] = useState( '' );
 
+    // state for next page url
     const [ nextPage, setNextPage ] = useState( '' );
 
+    // state for previous state url
     const [ previousPage, setPreviousPage ] = useState( '' );
 
+    // state for games url
     const [ games, setGames ] = useState( [] );
 
+    // state for error message 
     const [ errorMessage, setErrorMessage ] = useState( '' );
 
+    // this function is used to search for games from the api
     const addGames = ( item ) =>
     {
         request
@@ -40,15 +49,17 @@ const GameZoo = () =>
                 setGames( data.body.results );
                 setNextPage( data.body.next );
                 setPreviousPage( data.body.previous );
-                //console.log(data.body.results)
             } )
             .catch( async ( error ) =>
             {
-                setErrorMessage( error.message );
+                error.message.includes( 'Request has been terminated' ) ?
+                    setErrorMessage( 'No internet connection, try again!' ) :
+                    setErrorMessage( error.message );
             } );
     };
 
 
+    // this function runs when you are searching for an item. anytime the search item is changed, the function runs
     const handleChange = ( e ) =>
     {
         setGames( [] );
@@ -70,22 +81,25 @@ const GameZoo = () =>
 
         if ( searchValue !== '' )
         {
-            //navigate(`/game-zoo/search/${searchValue}`)
             addGames( searchValue );
         }
 
     };
 
+    // this function runs on next page button click
     const handleNextPage = () =>
     {
         changePage( nextPage );
     };
 
+    // this function runs on previous page button click
     const handlePreviousPage = () =>
     {
         changePage( previousPage );
     };
 
+
+    // this function runs when you click next or previous page
     const changePage = ( page ) =>
     {
         setGames( [] );
@@ -100,10 +114,13 @@ const GameZoo = () =>
             } )
             .catch( async ( error ) =>
             {
-                setErrorMessage( error.message );
+                error.message.includes( 'Request has been terminated' ) ?
+                    setErrorMessage( 'No internet connection, try again!' ) :
+                    setErrorMessage( error.message );
             } );
     };
 
+    // this function runs when there is no search item
     const defaultGame = () =>
     {
         setGames( [] );
@@ -116,29 +133,51 @@ const GameZoo = () =>
                 setGames( data.body.results );
                 setNextPage( data.body.next );
                 setPreviousPage( data.body.previous );
-                //console.log(data.body.previous);
             } )
             .catch( async ( error ) =>
             {
-                setErrorMessage( error.message );
+                error.message.includes( 'Request has been terminated' ) ?
+                    setErrorMessage( 'No internet connection, try again!' ) :
+                    setErrorMessage( error.message );
             } );
     };
 
+
+    /*
+
+
+        create new route page for gamezoo next and previous pages, so that if you click next and you go back, it takes you back to the previous page...
+
+
+    */
+
+
+
+
+
+
+
+
+    // run when page loads
     useEffect( () =>
     {
+        // check if there is a search item in the url, and run defaultGame if false
         if ( params.search === undefined ) return defaultGame();
 
+        // if there is a search item in the url, store it as the search item
         setSearchItem( params.search );
+
+        // if there is a search item in the url, search for the item from the api with this function
         addGames( params.search );
+
+        // when the page loads, set error message to nothing
+        setErrorMessage( '' );
+
     }, [ params.search ] );
 
 
     return (
         <div style={ container }>
-            {/* <header className='game-zoo-header'>
-                <span className='game-zoo-header-name'><span style={{color: '#D95BA0'}}>Game</span> Zoo</span>
-                <input className='game-zoo-header-search-input' value={searchItem} onChange={handleChange} type='search' placeholder='Search for games'/>
-            </header> */}
             <NavBar searchItem={ searchItem } handleChange={ handleChange } gameZoo />
             {
                 searchItem.length !== 0 ?
@@ -156,6 +195,7 @@ const GameZoo = () =>
                                 <section className='game-card' key={ game.id }>
                                     <Link
                                         to={ `/game-zoo/${ game.slug }` }
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
                                     >
                                         <img className='imageFrame' src={ game.background_image } alt={ game.name } />
                                         <div className='desc'>
@@ -184,7 +224,7 @@ const GameZoo = () =>
 
             <div style={ { textAlign: 'center' } }>
                 {
-                    previousPage === null ?
+                    errorMessage !== '' || previousPage === null ?
                         <></> :
                         <button
                             className='previous-page'
@@ -195,7 +235,7 @@ const GameZoo = () =>
                 }
 
                 {
-                    nextPage === null ?
+                    errorMessage !== '' || nextPage === null ?
                         <></> :
                         <button
                             className='next-page'

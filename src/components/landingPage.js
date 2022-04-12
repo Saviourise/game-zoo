@@ -113,7 +113,7 @@ function LandingPage ()
                     <div className='home-page-search-bar-container'>
                         <div className='search-container'>
                             <form onSubmit={ handleSubmit } className='home-page-search-form'>
-                                <input type='search' placeholder="Search For Games" className='home-page-search-input' required value={ searchValue } onChange={ updateSearchValue } />
+                                <input type='search' maxLength='25' placeholder="Search For Games" className='home-page-search-input' required value={ searchValue } onChange={ updateSearchValue } />
                                 <button type='submit' value='' className='home-page-search-submit-btn'><FontAwesomeIcon icon={ faSearch } /></button>
                             </form>
                         </div>

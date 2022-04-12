@@ -12,6 +12,7 @@
     background-color: #111;
     padding-top: 60px;
     z-index: 1000;
+    padding-bottom: 30px;
 }
 
 .games-list-container {
@@ -58,6 +59,7 @@
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     object-fit: contain;
+    margin-bottom: 20px;
 }
 
 .result-header {
@@ -78,6 +80,9 @@
     }
     .h4 {
         font-size: 80%;
+    }
+    .videoFrame {
+        height: 20vh;
     }
     .nothing {
         width: 200%;

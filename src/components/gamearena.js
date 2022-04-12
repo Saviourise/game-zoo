@@ -16,6 +16,7 @@ function GameArena ()
     useEffect( () =>
     {
         addGames();
+        return;
     }, [] );
 
     const addGames = () =>
@@ -85,6 +86,270 @@ function GameArena ()
                 gameName: 'CALL OF DUTY 9 - GHOSTS',
                 gameVideoId: 'Zxnx3W-HA18'
             },
+            {
+                gameName: 'CALL OF DUTY INFINITY WARFARE',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'CALL OF DUTY WWII',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'COMPANY OF HEROES 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'CRYSIS 1',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'CRYSIS 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'CRYSIS 3',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'DARKSIDERS 3',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'DARKSIDERS II',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'DEADPOOL',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'DEVIL MAY CRY',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'DISHORNED',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FAR CRY 1',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FAR CRY 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FAR CRY 3',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FAR CRY 4',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FAR CRY 5',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FIFA 14',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FIFA 15',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FIFA 19',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'FIFA 22',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'GHOST RECON-FUTURE SOLDIER',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'HITMAN 5-ABSOLUTION',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'INJUSTICE 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'INJUSTICE-GODS AMONG US',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'JUMP FORCE',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'MASS EFFECT 3',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'MIDDLE EARTH-SHADOW OF MORDOR',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'MORTAL KOMBAT COMPLETE EDITION',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'MORTAL KOMBAT XL',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'NARUTO STORM 4',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'NARUTO SHIPPUDEN Ultimate Ninja STORM 3 Full Burst',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'METAL GEAR V- PHANTOM PAIN',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'PES 19 SETUP',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Pro Evolution Soccer 2017 Patch',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'PRO EVOLUTION SOCCER[s]',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'RYSE-SON OF ROME',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'SAINT ROW IV - Game of the Century Edition',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'SPEC OPS THE LINE',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'TEST DRIVE UNLIMITED',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'THE WITCHER 2 - Assassins of Kings - Enhanced Edition',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'THE WITCHER 3 - WILD HUNT (GOTY)',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'WATCH DOGS 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'ASSASSINS CREED -ORIGINS',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'BATMAN-ARKHAM ORIGINS',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'BIOMUTANT',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Cyberpunk 2077 [FitGirl Repack]',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'DARK SOULS 2 - SCHOLAR OF THE FIRST SIN',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Dead Cells',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Far Cry - New Dawn',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'GOD OF WAR',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'GTA V',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'JUMP FORCE',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'JUMP FORCE - ULTIMATE EDITION',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Just Cause 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'MIDDLE EARTH - SHADOW OF WAR',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'MORTAL KOMBAT 9 - KOMPLETE EDITION',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Need for Speed Rivals',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'NieR - Automata',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Oriand The Blind Forest - Definitive Edition',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'PROTOTYPE',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'PROTOTYPE 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Red Dead Redemption 2',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'SAINTRW III',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'Sekiro - Shadows Die Twice',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'THE AMAZING SPIDER MAN',
+                gameVideoId: ''
+            },
+            {
+                gameName: 'TOMB RAIDER-SURVIVAL EDITION',
+                gameVideoId: ''
+            },
         ];
 
         setGames( gamesArray );
@@ -141,7 +406,7 @@ function GameArena ()
                                         src={ `https://www.youtube.com/embed/${ game.gameVideoId }` }
                                         allowFullScreen="allowfullscreen"
                                         frameBorder="0"
-                                        title={i}
+                                        title={ i }
                                     >
                                     </iframe>
                                     <div className='desc'>
