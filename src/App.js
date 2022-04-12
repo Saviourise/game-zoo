@@ -5,6 +5,8 @@ import Page404 from "./components/404page";
 import GameZoo from "./components/gamezoo";
 import GameDatail from "./components/gameDetail";
 import { useEffect } from "react";
+import GameRoom from "./components/gameroom";
+import SignUp from "./components/signup";
 
 
 function App ()
@@ -19,6 +21,9 @@ function App ()
         <Route path='/' exact element={ <LandingPage /> } />
         <Route path='/game-arena' exact element={ <GameArena /> } />
         <Route path='/game-zoo' exact element={ <GameZoo /> } />
+        <Route path='/game-room' exact element={ <GameRoom /> } />
+        <Route path='/game-room/:room' exact element={ <GameRoom /> } />
+        <Route path='/game-room/signup' exact element={ <SignUp /> } />
         <Route path='/game-zoo/search/:search' exact element={ <GameZoo /> } />
         <Route path='/game-zoo/:slug' element={ <GameDatail /> } />
         <Route path='/*' element={ <Page404 /> } />

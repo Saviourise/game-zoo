@@ -27,7 +27,7 @@ const NavBar = ( props ) =>
 
     const openNavBar = () =>
     {
-        document.querySelector( '.phone-header-nav' ).style.width = '60%';
+        document.querySelector( '.phone-header-nav' ).style.width = '50%';
         document.querySelector( '.phone-header-nav' ).style.padding = '20px';
         document.querySelector( '.overlay-nav ' ).style.opacity = '.8';
         document.querySelector( '.overlay-nav' ).style.width = '100%';
@@ -47,7 +47,8 @@ const NavBar = ( props ) =>
     {
         if ( props.gameArena ) return setGameWhat( 'Arena' );
         if ( props.gameZoo ) return setGameWhat( 'Zoo' );
-    }, [ props.gameZoo, props.gameArena ] );
+        if ( props.gameroom ) return setGameWhat( 'Room' );
+    }, [ props.gameZoo, props.gameArena, props.gameroom ] );
 
     useEffect( () =>
     {
@@ -57,7 +58,7 @@ const NavBar = ( props ) =>
             {
                 setBlackNav( true );
             } else setBlackNav( false );
-        }, );
+        } );
         return () =>
         {
             window.removeEventListener( 'scroll' );
@@ -68,34 +69,153 @@ const NavBar = ( props ) =>
         <>
             <header className={ `header-header-desktop ${ blackNav && "nav-black" }` }>
                 <span className='header-header-name'><span style={ { color: '#D95BA0' } }>Game</span> { gameWhat }</span>
-                <input className='header-header-search-input' value={ props.searchItem } onChange={ props.handleChange } maxLength='25' type='search' placeholder='Search for games' />
+                {
+                    !props.gameroom ?
+                        <input
+                            className='header-header-search-input'
+                            value={ props.searchItem }
+                            onChange={ props.handleChange }
+                            maxLength='25'
+                            type='search'
+                            placeholder='Search for games'
+                        /> :
+                        <></>
+                }
                 <nav className='header-nav'>
-                    <Link to='/' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item active'>
+                    <Link
+                        to='/'
+                        style={ { color: '#fff', textDecoration: 'none' } }
+                        className='home-page-nav-bar-item active'
+                    >
                         Home
                     </Link>
                     {
-                        props.gameZoo ?
-                            <Link to='/game-zoo' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item'>
-                                Game Zoo
-                            </Link> :
-                            <Link to='/game-zoo' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
-                                Game Zoo
-                            </Link>
+                        props.gameroom ?
+                            <>
+
+                                {
+                                    props.room === 'Live Stream' ? <Link
+                                        to='/game-room/livestream'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        LiveStream
+                                    </Link> : <Link
+                                        to='/game-room/livestream'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        LiveStream
+                                    </Link>
+                                }
+
+                                {
+                                    props.room === 'Gaming Community' ? <Link
+                                        to='/game-room/community'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Gaming Community
+                                    </Link> : <Link
+                                        to='/game-room/community'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Gaming Community
+                                    </Link>
+                                }
+
+                                {
+                                    props.room === 'Events' ? <Link
+                                        to='/game-room/events'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Events
+                                    </Link> : <Link
+                                        to='/game-room/events'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Events
+                                    </Link>
+                                }
+
+                                {
+                                    props.room === 'Sign In' ? <Link
+                                        to='/game-room/signin'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign In
+                                    </Link> : <Link
+                                        to='/game-room/signin'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign In
+                                    </Link>
+                                }
+
+                                {
+                                    props.room === 'Sign Up' ? <Link
+                                        to='/game-room/signup'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign Up
+                                    </Link> : <Link
+                                        to='/game-room/signup'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign Up
+                                    </Link>
+                                }
+                            </> :
+                            <>
+                                {
+                                    props.gameZoo ?
+                                        <Link to='/game-zoo' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item'>
+                                            Game Zoo
+                                        </Link> :
+                                        <Link to='/game-zoo' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
+                                            Game Zoo
+                                        </Link>
+                                }
+
+                                {
+                                    props.gameArena ?
+                                        <Link to='/game-arena' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item'>
+                                            Game Arena
+                                        </Link> :
+                                        <Link to='/game-arena' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
+                                            Game Arena
+                                        </Link>
+                                }
+
+                                {
+                                    props.gameroom ?
+                                        <Link to='/game-room' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item'>
+                                            Game Room
+                                        </Link> :
+                                        <Link to='/game-room' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
+                                            Game Room
+                                        </Link>
+                                }
+                            </>
                     }
 
-                    {
-                        props.gameArena ?
-                            <Link to='/game-arena' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item'>
-                                Game Arena
-                            </Link> :
-                            <Link to='/game-arena' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
-                                Game Arena
-                            </Link>
-                    }
-
-                    <Link to='/' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
-                        Game Room
-                    </Link>
                 </nav>
 
 
@@ -105,10 +225,14 @@ const NavBar = ( props ) =>
 
             <header className={ `header-header-phone-head ${ blackNav && "nav-black" }` }>
 
-                <div className='input-con'>
-                    <input className='header-header-phone-search-input' maxLength='25' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
-                    <button className='input-btn' onClick={ closeSearch }>Close</button>
-                </div>
+                {
+                    !props.gameroom ? <div className='input-con'>
+                        <input className='header-header-phone-search-input' maxLength='25' value={ props.searchItem } onChange={ props.handleChange } type='search' placeholder='Search for games' />
+                        <button className='input-btn' onClick={ closeSearch }>Close</button>
+                    </div> : <></>
+                }
+
+
 
                 <div className='phone-header-nav'>
                     <nav className='header-phone-nav'>
@@ -119,28 +243,131 @@ const NavBar = ( props ) =>
                             Home
                         </Link>
                         {
-                            props.gameZoo ?
-                                <Link to='/game-zoo' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
-                                    Game Zoo
-                                </Link> :
-                                <Link to='/game-zoo' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
-                                    Game Zoo
-                                </Link>
-                        }
+                            props.gameroom ?
+                                <>
 
-                        {
-                            props.gameArena ?
-                                <Link to='/game-arena' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
-                                    Game Arena
-                                </Link> :
-                                <Link to='/game-arena' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
-                                    Game Arena
-                                </Link>
-                        }
+                                    {
+                                        props.room === 'Live Stream' ? <Link
+                                            to='/game-room/livestream'
+                                            style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                            className='home-page-nav-bar-item-phone'
+                                            onClick={ closeNavBar }
+                                        >
+                                            LiveStream
+                                        </Link> : <Link
+                                            to='/game-room/livestream'
+                                            style={ { color: '#fff', textDecoration: 'none' } }
+                                            className='home-page-nav-bar-item-phone'
+                                            onClick={ closeNavBar }
+                                        >
+                                            LiveStream
+                                        </Link>
+                                    }
 
-                        <Link to='/' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
-                            Game Room
-                        </Link>
+                                    {
+                                        props.room === 'Gaming Community' ? <Link
+                                            to='/game-room/community'
+                                            style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                            className='home-page-nav-bar-item-phone'
+                                            onClick={ closeNavBar }
+                                        >
+                                            Gaming Community
+                                        </Link> : <Link
+                                            to='/game-room/community'
+                                            style={ { color: '#fff', textDecoration: 'none' } }
+                                            className='home-page-nav-bar-item-phone'
+                                            onClick={ closeNavBar }
+                                        >
+                                            Gaming Community
+                                        </Link>
+                                    }
+
+                                    {
+                                        props.room === 'Events' ? <Link
+                                            to='/game-room/events'
+                                            style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                            className='home-page-nav-bar-item-phone'
+                                            onClick={ closeNavBar }
+                                        >
+                                            Events
+                                        </Link> : <Link
+                                            to='/game-room/events'
+                                            style={ { color: '#fff', textDecoration: 'none' } }
+                                            className='home-page-nav-bar-item-phone'
+                                            onClick={ closeNavBar }
+                                        >
+                                            Events
+                                        </Link>
+                                    }
+
+{
+                                    props.room === 'Sign In' ? <Link
+                                        to='/game-room/signin'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item-phone'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign In
+                                    </Link> : <Link
+                                        to='/game-room/signin'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item-phone'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign In
+                                    </Link>
+                                }
+
+                                {
+                                    props.room === 'Sign Up' ? <Link
+                                        to='/game-room/signup'
+                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item-phone'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign Up
+                                    </Link> : <Link
+                                        to='/game-room/signup'
+                                        style={ { color: '#fff', textDecoration: 'none' } }
+                                        className='home-page-nav-bar-item-phone'
+                                        onClick={ closeNavBar }
+                                    >
+                                        Sign Up
+                                    </Link>
+                                }
+                                </> :
+                                <>
+                                    {
+                                        props.gameZoo ?
+                                            <Link to='/game-zoo' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
+                                                Game Zoo
+                                            </Link> :
+                                            <Link to='/game-zoo' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
+                                                Game Zoo
+                                            </Link>
+                                    }
+
+                                    {
+                                        props.gameArena ?
+                                            <Link to='/game-arena' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
+                                                Game Arena
+                                            </Link> :
+                                            <Link to='/game-arena' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
+                                                Game Arena
+                                            </Link>
+                                    }
+
+                                    {
+                                        props.gameroom ?
+                                            <Link to='/game-room' style={ { color: '#D95BA0', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
+                                                Game Room
+                                            </Link> :
+                                            <Link to='/game-room' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item-phone'>
+                                                Game Room
+                                            </Link>
+                                    }
+                                </>
+                        }
                     </nav>
 
                     <button className='input-btn' onClick={ closeNavBar }>Close</button>

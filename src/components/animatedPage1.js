@@ -40,6 +40,8 @@ function AnimatedPage1() {
 
     const handleScrollAnimation = () => {
         animatedElement.current.style.transform = `rotateX(40deg)`
+        animatedElement3.current.style.transform = `rotateX(0deg)`
+        animatedElement2.current.style.transform = `rotateX(0deg)`
         img1.current.style.marginTop = '-120px'
         clearInterval(aniInt)
         aniInt = 0;
@@ -47,6 +49,8 @@ function AnimatedPage1() {
 
     const handleScrollAnimation2 = () => {
         animatedElement2.current.style.transform = `rotateX(40deg)`
+        animatedElement3.current.style.transform = `rotateX(0deg)`
+        animatedElement.current.style.transform = `rotateX(0deg)`
         img2.current.style.marginTop = '-130px'
         clearInterval(aniInt)
         aniInt = 0;
@@ -54,6 +58,8 @@ function AnimatedPage1() {
 
     const handleScrollAnimation3 = () => {
         animatedElement3.current.style.transform = `rotateX(40deg)`
+        animatedElement2.current.style.transform = `rotateX(0deg)`
+        animatedElement.current.style.transform = `rotateX(0deg)`
         img3.current.style.marginTop = '-216px'
         clearInterval(aniInt)
         aniInt = 0;
@@ -94,6 +100,7 @@ function AnimatedPage1() {
             handleScrollUpAnimation()
             animatedElement.current.style.transform = 'skew(0deg)';
             animatedElement2.current.style.transform = 'skew(0deg)';
+            animatedElement3.current.style.transform = 'skew(0deg)';
         }
         if(itemDim.top < parseInt(window.innerHeight/2) && itemDim.top > 0-(window.innerHeight/2)) {
             handleScrollAnimation()

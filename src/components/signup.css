@@ -1,0 +1,123 @@
+.sign-up-con {
+    background-color: #111;
+    color: #fff;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-form {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-input {
+    margin: 10px 0px;
+    background: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 50px 0px 20px;
+    outline: none;
+    color: #fff;
+    height: 40px;
+    width: 300px;
+    transition: all 1s;
+    margin-left: -20px;
+}
+
+.sign-up-input::placeholder {
+    color: #aaa;
+}
+
+.sign-up-icon {
+    margin-left: -40px;
+    color: #aaa;
+    transition: all 1s;
+    cursor: pointer;
+}
+
+.sign-up-submit-btn {
+    background-color: #D95BA0;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.sign-up-submit-icon {
+    margin-left: 10px;
+}
+
+.sign-up-accs-icon {
+    margin-left: 10px;
+}
+
+
+.sign-up-or {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.sign-up-accs {
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.sign-up-accs-google {
+    background-color: #db4437;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 180px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.sign-up-accs-playgames {
+    background-color: #1d7c48;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+button {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    .sign-up-accs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .sign-up-accs-google {
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+    
+    .sign-up-accs-playgames {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+}

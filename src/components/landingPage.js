@@ -104,9 +104,9 @@ function LandingPage ()
                                 <Link to='/game-arena' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
                                     Game Arena
                                 </Link>
-                                <a className='home-page-nav-bar-item'>
+                                <Link to='/game-room' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
                                     Game Room
-                                </a>
+                                </Link>
                             </nav>
                         </div>
                     </div>

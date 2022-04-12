@@ -7,7 +7,7 @@ function Page404() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'column',
-                backgroundColor: '#000',
+                backgroundColor: '#111',
                 width: '100%',
                 height: '100vh',
                 padding: '0px 20px',
