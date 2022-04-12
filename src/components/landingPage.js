@@ -42,18 +42,20 @@ function LandingPage ()
         document.querySelector( '.overlay' ).style.width = '0';
     };
 
-    useEffect(() => {
+    useEffect( () =>
+    {
         window.addEventListener( 'scroll', () =>
         {
             if ( window.scrollY > 100 )
             {
                 setBlackNav( true );
             } else setBlackNav( false );
-        })
-        return () => {
-            window.removeEventListener('scroll')
+        } );
+        return () =>
+        {
+            window.removeEventListener( 'scroll' );
         };
-    }, []);
+    }, [] );
 
     return (
         <>
@@ -69,12 +71,12 @@ function LandingPage ()
                     <Link to='/game-arena' className='home-page-nav-bar-item'>
                         Game Arena
                     </Link>
-                    <a className='home-page-nav-bar-item'>
+                    <Link to='/game-room' style={ { color: '#fff', textDecoration: 'none' } } className='home-page-nav-bar-item'>
                         Game Room
-                    </a>
+                    </Link>
                 </div>
                 <div className="home-page-container">
-                    <div className={`phone-nav ${blackNav && "desktop-nav-black"}`}>
+                    <div className={ `phone-nav ${ blackNav && "desktop-nav-black" }` }>
                         <div onClick={ openNav } className='responsive-nav-bar'>
                             <p className='nav-bar-logo'>
                                 <img src={ gamezoologo } alt='logo' className='logo' />
@@ -87,7 +89,7 @@ function LandingPage ()
                         </div>
                     </div>
 
-                    <div className={`desktop-nav ${blackNav && "desktop-nav-black"}`}>
+                    <div className={ `desktop-nav ${ blackNav && "desktop-nav-black" }` }>
                         <div className='desktop-nav-1'>
                             <p className='nav-bar-logo-desktop'>
                                 <img src={ gamezoologo } alt='logo' className='logo' />
@@ -124,7 +126,7 @@ function LandingPage ()
             <AnimatedPage1 />
             <AnimatedPage2 />
             <AboutPage />
-            <div className='overlay' onClick={closeNav}>
+            <div className='overlay' onClick={ closeNav }>
 
             </div>
         </>
