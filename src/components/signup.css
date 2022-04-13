@@ -9,6 +9,15 @@
     align-items: center;
 }
 
+.welcome-sign-up {
+    margin-bottom: 10px;
+}
+
+.logout-sign-up {
+    margin-top: 10px;
+}
+
+
 .sign-up-form {
     margin-top: 0px;
     margin-bottom: 20px;

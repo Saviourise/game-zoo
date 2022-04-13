@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faUser, faEye, faPaperPlane, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 const SignUp = () =>
 {
@@ -12,15 +12,23 @@ const SignUp = () =>
     const client_id = '370132929396-sn1fidi5m5qoe3cam0gngmcgq6trf6em.apps.googleusercontent.com';
 
     const [ logged, setLogged ] = useState( false );
+    const [ name, setName ] = useState( '' );
 
 
     const onSuccess = res =>
     {
         setLogged( true );
+        setName( res.profileObj.name );
     };
 
     const onFailure = res =>
     {
+        setLogged( false );
+    };
+
+    const onLogoutSuccess = () =>
+    {
+        alert( 'Logged Out' );
         setLogged( false );
     };
 
@@ -106,8 +114,15 @@ const SignUp = () =>
                     </div>
 
                 </div > :
+
+
                     <div className='sign-up-con'>
-                        Google Sign Up Success
+                        <div className='welcome-sign-up'>Welcome { name }</div>
+                        <div className='logout-sign-up'><GoogleLogout
+                            clientId={ client_id }
+                            buttonText='Log Out'
+                            onLogoutSuccess={ onLogoutSuccess }
+                        /></div>
                     </div>
             }
         </>
