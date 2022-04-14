@@ -5,7 +5,7 @@ import { faEnvelope, faUser, faEye, faPaperPlane, faGamepad } from '@fortawesome
 import { useEffect, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import SnackBar from './snackbar';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const SignUp = () =>
 {
@@ -16,6 +16,27 @@ const SignUp = () =>
     const [ snackMessage, setSnackMessage ] = useState( '' );
     const [ snack, setSnack ] = useState( false );
     const [ name, setName ] = useState( '' );
+    const [ email, setEmail ] = useState( '' );
+    const [ username, setUsername ] = useState( '' );
+    const [ password, setPassword ] = useState( '' );
+
+    const getEmail = ( e ) =>
+    {
+        let emailValue = e.target.value;
+        setEmail( emailValue );
+    };
+
+    const getUsername = ( e ) =>
+    {
+        let usernameValue = e.target.value;
+        setUsername( usernameValue );
+    };
+
+    const getPassword = ( e ) =>
+    {
+        let passwordValue = e.target.value;
+        setPassword( passwordValue );
+    };
 
 
     const onSuccess = res =>
@@ -24,20 +45,21 @@ const SignUp = () =>
         setName( res.profileObj.name );
     };
 
-    const showSnack = () => {
+    const showSnack = () =>
+    {
         setSnack( true );
-        setSnackMessage('Function is coming soon')
-        setTimeout(function(){ return setSnack(false); }, 3000);
-    }
+        setSnackMessage( 'Function is coming soon' );
+        setTimeout( function () { return setSnack( false ); }, 3000 );
+    };
 
     const onFailure = res =>
     {
         //alert('Could not sign up, please try again!')
         setSnack( true );
-        setSnackMessage('An error occurred, please try again!')
+        setSnackMessage( 'An error occurred, please try again!' );
         //console.log();
         setLogged( false );
-        setTimeout(function(){ return setSnack(false); }, 3000);
+        setTimeout( function () { return setSnack( false ); }, 3000 );
     };
 
     const onLogoutSuccess = () =>
@@ -51,7 +73,46 @@ const SignUp = () =>
     const handleSubmit = e =>
     {
         e.preventDefault();
-        return;
+
+        document.querySelector( '.overlay-nav ' ).style.opacity = '.8';
+        document.querySelector( '.overlay-nav' ).style.width = '100%';
+
+        const user = new Object();
+        user.name = username;
+        user.email = email;
+        user.password = password;
+
+        fetch( 'https://guarded-lake-44093.herokuapp.com/user/register', {
+            method: 'POST',
+            body: JSON.stringify( user ),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        } )
+            .then( res => res.json() )
+            .then(
+                data =>
+                {
+                    document.querySelector( '.overlay-nav ' ).style.opacity = '0';
+                    document.querySelector( '.overlay-nav' ).style.width = '0';
+                    //console.log( data );
+                    if ( data.error )
+                    {
+                        setSnack( true );
+                        setSnackMessage( data.message );
+                        //console.log();
+                        setLogged( false );
+                        setTimeout( function () { return setSnack( false ); }, 3000 );
+                    } else
+                    {
+                        setSnack( true );
+                        setSnackMessage( 'Account created successfully' );
+                        setLogged( true );
+                        setName( data.name );
+                        setTimeout( function () { return setSnack( false ); }, 3000 );
+                    }
+                }
+            );
     };
 
     const showHidePassword = () =>
@@ -68,7 +129,7 @@ const SignUp = () =>
     }, [] );
     return (
         <>
-            <NavBar gameroom room={ 'Sign Up' } logged={logged} name={name} />
+            <NavBar gameroom room={ 'Sign Up' } logged={ logged } name={ name } />
 
             {
                 !logged ? <div className='sign-up-con'>
@@ -78,6 +139,8 @@ const SignUp = () =>
                             <input
                                 type='email'
                                 placeholder='Enter your email'
+                                onChange={ getEmail }
+                                value={ email }
                                 required
                                 className='sign-up-input sign-up-email-input'
                             />
@@ -87,6 +150,8 @@ const SignUp = () =>
                             <input
                                 type='text'
                                 placeholder='Choose a username'
+                                onChange={ getUsername }
+                                value={ username }
                                 required
                                 className='sign-up-input sign-up-username-input'
                             />
@@ -97,6 +162,8 @@ const SignUp = () =>
                                 type={
                                     passwordType === 'password' ? 'password' : 'text'
                                 }
+                                onChange={ getPassword }
+                                value={ password }
                                 placeholder='Choose your password'
                                 required
                                 className='sign-up-input sign-up-password-input'
@@ -125,10 +192,10 @@ const SignUp = () =>
                             isSignedIn={ true }
                             theme="dark"
                         />
-                        <button className='sign-up-accs-playgames' onClick={showSnack}>Sign up with Play Games <FontAwesomeIcon icon={ faGamepad } className='sign-up-accs-icon' /></button>
+                        <button className='sign-up-accs-playgames' onClick={ showSnack }>Sign up with Play Games <FontAwesomeIcon icon={ faGamepad } className='sign-up-accs-icon' /></button>
                     </div>
                     <div className='no-acc'>
-                        Already have an account? 
+                        Already have an account?
                         <Link
                             to='/game-room/signin'
                             style={ { color: '#D95BA0', textDecoration: 'none' } }
@@ -150,10 +217,12 @@ const SignUp = () =>
                     </div>
             }
             {
-                snack ? 
-                <SnackBar message={snackMessage} /> :
-                <></>
+                snack ?
+                    <SnackBar message={ snackMessage } /> :
+                    <></>
             }
+
+            <div className='overlay-nav' />
         </>
     );
 };
