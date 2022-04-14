@@ -1,4 +1,4 @@
-.sign-up-con {
+.sign-in-con {
     background-color: #111;
     color: #fff;
     height: 100vh;
@@ -9,16 +9,16 @@
     align-items: center;
 }
 
-.welcome-sign-up {
+.welcome-sign-in {
     margin-bottom: 10px;
 }
 
-.logout-sign-up {
+.logout-sign-in {
     margin-top: 10px;
 }
 
 
-.sign-up-form {
+.sign-in-form {
     margin-top: 0px;
     margin-bottom: 20px;
     height: auto;
@@ -28,7 +28,7 @@
     align-items: center;
 }
 
-.sign-up-input {
+.sign-in-input {
     margin: 10px 0px;
     background: #000;
     border: none;
@@ -42,18 +42,18 @@
     margin-left: -20px;
 }
 
-.sign-up-input::placeholder {
+.sign-in-input::placeholder {
     color: #aaa;
 }
 
-.sign-up-icon {
+.sign-in-icon {
     margin-left: -40px;
     color: #aaa;
     transition: all 1s;
     cursor: pointer;
 }
 
-.sign-up-submit-btn {
+.sign-in-submit-btn {
     background-color: #D95BA0;
     color: #fff;
     border: none;
@@ -65,30 +65,30 @@
     margin: 20px 0px;
 }
 
-.sign-up-submit-icon {
+.sign-in-submit-icon {
     margin-left: 10px;
 }
 
-.sign-up-accs-icon {
+.sign-in-accs-icon {
     margin-left: 10px;
 }
 
 
-.sign-up-or {
+.sign-in-or {
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-.sign-up-accs {
+.sign-in-accs {
     margin-top: 40px;
     margin-bottom: 0px;
 }
 
-.sign-up-accs-google {
+.sign-in-accs-google {
     margin-right: 5px;
 }
 
-.sign-up-accs-playgames {
+.sign-in-accs-playgames {
     background-color: #1d7c48;
     color: #fff;
     border: none;
@@ -110,19 +110,19 @@ button {
 }
 
 @media screen and (max-width: 1200px) {
-    .sign-up-accs {
+    .sign-in-accs {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
     }
-    .sign-up-accs-google {
+    .sign-in-accs-google {
         margin-bottom: 10px;
         margin-right: 10px;
     }
     
-    .sign-up-accs-playgames {
+    .sign-in-accs-playgames {
         margin-top: 10px;
         margin-left: 0px;
     }

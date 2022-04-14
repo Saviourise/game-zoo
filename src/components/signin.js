@@ -1,5 +1,5 @@
 import NavBar from './navBar';
-import './signup.css';
+import './signin.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faUser, faEye, faPaperPlane, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,7 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import SnackBar from './snackbar';
 import { Link } from 'react-router-dom'
 
-const SignUp = () =>
+const SignIn = () =>
 {
 
     const client_id = '370132929396-sn1fidi5m5qoe3cam0gngmcgq6trf6em.apps.googleusercontent.com';
@@ -38,6 +38,7 @@ const SignUp = () =>
         //console.log();
         setLogged( false );
         setTimeout(function(){ return setSnack(false); }, 3000);
+        
     };
 
     const onLogoutSuccess = () =>
@@ -56,7 +57,7 @@ const SignUp = () =>
 
     const showHidePassword = () =>
     {
-        const passwordEl = document.querySelector( '.sign-up-password-input' ).type;
+        const passwordEl = document.querySelector( '.sign-in-password-input' ).type;
 
         if ( passwordEl === 'password' ) return setPasswordType( 'text' );
         setPasswordType( 'password' );
@@ -68,29 +69,20 @@ const SignUp = () =>
     }, [] );
     return (
         <>
-            <NavBar gameroom room={ 'Sign Up' } logged={logged} name={name} />
+            <NavBar gameroom room={ 'Sign In' } logged={logged} name={name} />
 
             {
-                !logged ? <div className='sign-up-con'>
+                !logged ? <div className='sign-in-con'>
 
-                    <form className='sign-up-form' onSubmit={ handleSubmit }>
+                    <form className='sign-in-form' onSubmit={ handleSubmit }>
                         <div>
                             <input
                                 type='email'
                                 placeholder='Enter your email'
                                 required
-                                className='sign-up-input sign-up-email-input'
+                                className='sign-in-input sign-in-email-input'
                             />
-                            <FontAwesomeIcon icon={ faEnvelope } className='sign-up-icon' />
-                        </div>
-                        <div>
-                            <input
-                                type='text'
-                                placeholder='Choose a username'
-                                required
-                                className='sign-up-input sign-up-username-input'
-                            />
-                            <FontAwesomeIcon icon={ faUser } className='sign-up-icon' />
+                            <FontAwesomeIcon icon={ faEnvelope } className='sign-in-icon' />
                         </div>
                         <div>
                             <input
@@ -99,49 +91,49 @@ const SignUp = () =>
                                 }
                                 placeholder='Choose your password'
                                 required
-                                className='sign-up-input sign-up-password-input'
+                                className='sign-in-input sign-in-password-input'
                             />
-                            <FontAwesomeIcon icon={ faEye } className='sign-up-icon' style={
+                            <FontAwesomeIcon icon={ faEye } className='sign-in-icon' style={
                                 passwordType === 'password' ? { color: '#aaa' } : { color: '#D95BA0' }
                             } onClick={ showHidePassword } />
                         </div>
-                        <button className='sign-up-submit-btn' type='submit'>
+                        <button className='sign-in-submit-btn' type='submit'>
                             Submit
-                            <FontAwesomeIcon icon={ faPaperPlane } className='sign-up-submit-icon' />
+                            <FontAwesomeIcon icon={ faPaperPlane } className='sign-in-submit-icon' />
                         </button>
                     </form>
 
-                    <p className='sign-up-or'>Or</p>
+                    <p className='sign-in-or'>Or</p>
 
-                    <div className='sign-up-accs'>
+                    <div className='sign-in-accs'>
                         {/* <button className='sign-up-accs-google'>Sign up with Google <FontAwesomeIcon icon={ faGoogle } className='sign-up-accs-icon' /></button> */ }
                         <GoogleLogin
                             clientId={ client_id }
-                            buttonText='Sign up with Google'
+                            buttonText='Sign In with Google'
                             onSuccess={ onSuccess }
                             onFailure={ onFailure }
                             cookiePolicy={ 'single_host_origin' }
-                            className='sign-up-accs-google'
+                            className='sign-in-accs-google'
                             isSignedIn={ true }
                             theme="dark"
                         />
-                        <button className='sign-up-accs-playgames' onClick={showSnack}>Sign up with Play Games <FontAwesomeIcon icon={ faGamepad } className='sign-up-accs-icon' /></button>
+                        <button className='sign-in-accs-playgames' onClick={showSnack}>Sign In with Play Games <FontAwesomeIcon icon={ faGamepad } className='sign-up-accs-icon' /></button>
                     </div>
                     <div className='no-acc'>
-                        Already have an account? 
+                        Don't have an account? 
                         <Link
-                            to='/game-room/signin'
+                            to='/game-room/signup'
                             style={ { color: '#D95BA0', textDecoration: 'none' } }
                         >
-                            Sign In Instead
+                            Sign Up Instead
                         </Link>
                     </div>
                 </div > :
 
 
-                    <div className='sign-up-con'>
-                        <div className='welcome-sign-up'>Welcome { name }</div>
-                        <div className='logout-sign-up'><GoogleLogout
+                    <div className='sign-in-con'>
+                        <div className='welcome-sign-in'>Welcome { name }</div>
+                        <div className='logout-sign-in'><GoogleLogout
                             clientId={ client_id }
                             buttonText='Log Out'
                             onLogoutSuccess={ onLogoutSuccess }
@@ -158,4 +150,4 @@ const SignUp = () =>
     );
 };
 
-export default SignUp;
+export default SignIn;

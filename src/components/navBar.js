@@ -2,13 +2,14 @@ import './navBar.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBarsStaggered, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBarsStaggered, faSearch, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import gamezoologo from '../assets/gamezoologo.png';
 
 const NavBar = ( props ) =>
 {
 
     const [ gameWhat, setGameWhat ] = useState( '' );
+    const [ user, setUser ] = useState( '' );
     const [ blackNav, setBlackNav ] = useState( false );
 
     const openSearch = () =>
@@ -52,6 +53,8 @@ const NavBar = ( props ) =>
 
     useEffect( () =>
     {
+
+        if(props.logged) setUser(props.name)
         window.addEventListener( 'scroll', () =>
         {
             if ( window.scrollY > 50 )
@@ -95,7 +98,7 @@ const NavBar = ( props ) =>
 
                                 {
                                     props.room === 'Live Stream' ? <Link
-                                        to='/game-room/livestream'
+                                        to={`/game-room/livestream`}
                                         style={ { color: '#D95BA0', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
@@ -147,40 +150,48 @@ const NavBar = ( props ) =>
                                     </Link>
                                 }
 
-                                {
-                                    props.room === 'Sign In' ? <Link
-                                        to='/game-room/signin'
-                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
-                                        className='home-page-nav-bar-item'
-                                        onClick={ closeNavBar }
-                                    >
-                                        Sign In
-                                    </Link> : <Link
-                                        to='/game-room/signin'
-                                        style={ { color: '#fff', textDecoration: 'none' } }
-                                        className='home-page-nav-bar-item'
-                                        onClick={ closeNavBar }
-                                    >
-                                        Sign In
-                                    </Link>
-                                }
+                                { !props.logged ?
+                                    <>
+                                        {
+                                            props.room === 'Sign In' ? <Link
+                                                to='/game-room/signin'
+                                                style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                                className='home-page-nav-bar-item'
+                                                onClick={ closeNavBar }
+                                            >
+                                                Sign In
+                                            </Link> : <Link
+                                                to='/game-room/signin'
+                                                style={ { color: '#fff', textDecoration: 'none' } }
+                                                className='home-page-nav-bar-item'
+                                                onClick={ closeNavBar }
+                                            >
+                                                Sign In
+                                            </Link>
+                                        }
 
-                                {
-                                    props.room === 'Sign Up' ? <Link
-                                        to='/game-room/signup'
-                                        style={ { color: '#D95BA0', textDecoration: 'none' } }
-                                        className='home-page-nav-bar-item'
-                                        onClick={ closeNavBar }
-                                    >
-                                        Sign Up
-                                    </Link> : <Link
-                                        to='/game-room/signup'
-                                        style={ { color: '#fff', textDecoration: 'none' } }
-                                        className='home-page-nav-bar-item'
-                                        onClick={ closeNavBar }
-                                    >
-                                        Sign Up
-                                    </Link>
+                                        {
+                                            props.room === 'Sign Up' ? <Link
+                                                to='/game-room/signup'
+                                                style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                                className='home-page-nav-bar-item'
+                                                onClick={ closeNavBar }
+                                            >
+                                                Sign Up
+                                            </Link> : <Link
+                                                to='/game-room/signup'
+                                                style={ { color: '#fff', textDecoration: 'none' } }
+                                                className='home-page-nav-bar-item'
+                                                onClick={ closeNavBar }
+                                            >
+                                                Sign Up
+                                            </Link>
+                                        }
+                                    </> :
+                                    <>
+                                        <p className='home-page-nav-bar-item' style={ { color: '#D95BA0'} }>{ props.name }</p>
+                                        <p className='home-page-nav-bar-item' style={ { color: '#D95BA0', fontSize: 30 } }><FontAwesomeIcon icon={ faUserCircle } /></p>
+                                    </>
                                 }
                             </> :
                             <>
@@ -300,40 +311,48 @@ const NavBar = ( props ) =>
                                         </Link>
                                     }
 
-                                    {
-                                        props.room === 'Sign In' ? <Link
-                                            to='/game-room/signin'
-                                            style={ { color: '#D95BA0', textDecoration: 'none' } }
-                                            className='home-page-nav-bar-item-phone'
-                                            onClick={ closeNavBar }
-                                        >
-                                            Sign In
-                                        </Link> : <Link
-                                            to='/game-room/signin'
-                                            style={ { color: '#fff', textDecoration: 'none' } }
-                                            className='home-page-nav-bar-item-phone'
-                                            onClick={ closeNavBar }
-                                        >
-                                            Sign In
-                                        </Link>
-                                    }
+                                    { !props.logged ?
+                                        <>
+                                            {
+                                                props.room === 'Sign In' ? <Link
+                                                    to='/game-room/signin'
+                                                    style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                                    className='home-page-nav-bar-item-phone'
+                                                    onClick={ closeNavBar }
+                                                >
+                                                    Sign In
+                                                </Link> : <Link
+                                                    to='/game-room/signin'
+                                                    style={ { color: '#fff', textDecoration: 'none' } }
+                                                    className='home-page-nav-bar-item-phone'
+                                                    onClick={ closeNavBar }
+                                                >
+                                                    Sign In
+                                                </Link>
+                                            }
 
-                                    {
-                                        props.room === 'Sign Up' ? <Link
-                                            to='/game-room/signup'
-                                            style={ { color: '#D95BA0', textDecoration: 'none' } }
-                                            className='home-page-nav-bar-item-phone'
-                                            onClick={ closeNavBar }
-                                        >
-                                            Sign Up
-                                        </Link> : <Link
-                                            to='/game-room/signup'
-                                            style={ { color: '#fff', textDecoration: 'none' } }
-                                            className='home-page-nav-bar-item-phone'
-                                            onClick={ closeNavBar }
-                                        >
-                                            Sign Up
-                                        </Link>
+                                            {
+                                                props.room === 'Sign Up' ? <Link
+                                                    to='/game-room/signup'
+                                                    style={ { color: '#D95BA0', textDecoration: 'none' } }
+                                                    className='home-page-nav-bar-item-phone'
+                                                    onClick={ closeNavBar }
+                                                >
+                                                    Sign Up
+                                                </Link> : <Link
+                                                    to='/game-room/signup'
+                                                    style={ { color: '#fff', textDecoration: 'none' } }
+                                                    className='home-page-nav-bar-item-phone'
+                                                    onClick={ closeNavBar }
+                                                >
+                                                    Sign Up
+                                                </Link>
+                                            }
+                                        </> :
+                                        <>
+                                            <p className='home-page-nav-bar-item-phone'>{ props.name }</p>
+                                            <p className='home-page-nav-bar-item-phone'><FontAwesomeIcon icon={ faUserCircle } /></p>
+                                        </>
                                     }
                                 </> :
                                 <>
