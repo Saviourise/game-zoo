@@ -189,8 +189,8 @@ const NavBar = ( props ) =>
                                         }
                                     </> :
                                     <>
-                                        <p className='home-page-nav-bar-item' style={ { color: '#D95BA0'} }>{ props.name }</p>
-                                        <p className='home-page-nav-bar-item' style={ { color: '#D95BA0', fontSize: 30 } }><FontAwesomeIcon icon={ faUserCircle } /></p>
+                                        <p className='home-page-nav-bar-item' style={ { color: '#D95BA0', marginRight: 0} }>{ props.name }</p>
+                                        <p className='home-page-nav-bar-item' style={ { color: '#D95BA0', fontSize: 30, marginLeft: 0 } }><FontAwesomeIcon icon={ faUserCircle } /></p>
                                     </>
                                 }
                             </> :
@@ -350,8 +350,8 @@ const NavBar = ( props ) =>
                                             }
                                         </> :
                                         <>
-                                            <p className='home-page-nav-bar-item-phone'>{ props.name }</p>
-                                            <p className='home-page-nav-bar-item-phone'><FontAwesomeIcon icon={ faUserCircle } /></p>
+                                            <p className='home-page-nav-bar-item-phone' style={ { color: '#D95BA0', marginLeft: 0 } }>{ props.name }</p>
+                                            <p className='home-page-nav-bar-item-phone' style={ { color: '#D95BA0', fontSize: 30, marginLeft: 0 } }><FontAwesomeIcon icon={ faUserCircle } /></p>
                                         </>
                                     }
                                 </> :
