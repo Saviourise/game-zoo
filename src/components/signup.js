@@ -5,12 +5,15 @@ import { faEnvelope, faUser, faEye, faPaperPlane, faGamepad } from '@fortawesome
 import { useEffect, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import SnackBar from './snackbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () =>
 {
 
     const client_id = '370132929396-sn1fidi5m5qoe3cam0gngmcgq6trf6em.apps.googleusercontent.com';
+
+    // router navigate function
+    let navigate = useNavigate();
 
     const [ logged, setLogged ] = useState( false );
     const [ snackMessage, setSnackMessage ] = useState( '' );
@@ -19,6 +22,7 @@ const SignUp = () =>
     const [ email, setEmail ] = useState( '' );
     const [ username, setUsername ] = useState( '' );
     const [ password, setPassword ] = useState( '' );
+    const [ token, setToken ] = useState( '' );
 
     const getEmail = ( e ) =>
     {
@@ -95,7 +99,8 @@ const SignUp = () =>
                 {
                     document.querySelector( '.overlay-nav ' ).style.opacity = '0';
                     document.querySelector( '.overlay-nav' ).style.width = '0';
-                    //console.log( data );
+                    //console.log( data.token );
+                    setToken(data.token)
                     if ( data.error )
                     {
                         setSnack( true );
@@ -109,6 +114,7 @@ const SignUp = () =>
                         setSnackMessage( 'Account created successfully' );
                         setLogged( true );
                         setName( data.name );
+                        navigate(`/game-room/${data.token}`)
                         setTimeout( function () { return setSnack( false ); }, 3000 );
                     }
                 }
@@ -123,10 +129,7 @@ const SignUp = () =>
         setPasswordType( 'password' );
     };
 
-    useEffect( () =>
-    {
-
-    }, [] );
+    
     return (
         <>
             <NavBar gameroom room={ 'Sign Up' } logged={ logged } name={ name } />
@@ -143,6 +146,7 @@ const SignUp = () =>
                                 value={ email }
                                 required
                                 className='sign-up-input sign-up-email-input'
+                                minLength={ 6 }
                             />
                             <FontAwesomeIcon icon={ faEnvelope } className='sign-up-icon' />
                         </div>
@@ -154,6 +158,7 @@ const SignUp = () =>
                                 value={ username }
                                 required
                                 className='sign-up-input sign-up-username-input'
+                                minLength={ 5 }
                             />
                             <FontAwesomeIcon icon={ faUser } className='sign-up-icon' />
                         </div>
@@ -166,6 +171,7 @@ const SignUp = () =>
                                 value={ password }
                                 placeholder='Choose your password'
                                 required
+                                minLength={ 6 }
                                 className='sign-up-input sign-up-password-input'
                             />
                             <FontAwesomeIcon icon={ faEye } className='sign-up-icon' style={

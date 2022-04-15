@@ -5,17 +5,23 @@ import { faEnvelope, faUser, faEye, faPaperPlane, faGamepad } from '@fortawesome
 import { useEffect, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import SnackBar from './snackbar';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignIn = () =>
 {
 
     const client_id = '370132929396-sn1fidi5m5qoe3cam0gngmcgq6trf6em.apps.googleusercontent.com';
 
+    // router navigate function
+    let navigate = useNavigate();
+
     const [ logged, setLogged ] = useState( false );
     const [ snackMessage, setSnackMessage ] = useState( '' );
     const [ snack, setSnack ] = useState( false );
     const [ name, setName ] = useState( '' );
+    const [ email, setEmail ] = useState( '' );
+    const [ password, setPassword ] = useState( '' );
+    const [ token, setToken ] = useState( '' );
 
 
     const onSuccess = res =>
@@ -24,21 +30,34 @@ const SignIn = () =>
         setName( res.profileObj.name );
     };
 
-    const showSnack = () => {
+    const getEmail = ( e ) =>
+    {
+        let emailValue = e.target.value;
+        setEmail( emailValue );
+    };
+
+    const getPassword = ( e ) =>
+    {
+        let passwordValue = e.target.value;
+        setPassword( passwordValue );
+    };
+
+    const showSnack = () =>
+    {
         setSnack( true );
-        setSnackMessage('Function is coming soon')
-        setTimeout(function(){ return setSnack(false); }, 3000);
-    }
+        setSnackMessage( 'Function is coming soon' );
+        setTimeout( function () { return setSnack( false ); }, 3000 );
+    };
 
     const onFailure = res =>
     {
         //alert('Could not sign up, please try again!')
         setSnack( true );
-        setSnackMessage('An error occurred, please try again!')
+        setSnackMessage( 'An error occurred, please try again!' );
         //console.log();
         setLogged( false );
-        setTimeout(function(){ return setSnack(false); }, 3000);
-        
+        setTimeout( function () { return setSnack( false ); }, 3000 );
+
     };
 
     const onLogoutSuccess = () =>
@@ -52,7 +71,52 @@ const SignIn = () =>
     const handleSubmit = e =>
     {
         e.preventDefault();
-        return;
+        document.querySelector( '.overlay-nav ' ).style.opacity = '.8';
+        document.querySelector( '.overlay-nav' ).style.width = '100%';
+
+        const user = new Object();
+        user.email = email;
+        user.password = password;
+
+        fetch( 'https://guarded-lake-44093.herokuapp.com/user/login', {
+            method: 'POST',
+            body: JSON.stringify( user ),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        } )
+            .then( res => res.json() )
+            .then(
+                data =>
+                {
+                    document.querySelector( '.overlay-nav ' ).style.opacity = '0';
+                    document.querySelector( '.overlay-nav' ).style.width = '0';
+                    //console.log( data.token );
+                    setToken( data.token );
+                    if ( data.error )
+                    {
+                        setSnack( true );
+                        setSnackMessage( data.message );
+                        //console.log();
+                        setLogged( false );
+                        setTimeout( function () { return setSnack( false ); }, 3000 );
+                    } else
+                    {
+                        setSnack( true );
+                        setSnackMessage( 'Log in successful' );
+                        setLogged( true );
+                        setName( data.name );
+                        navigate( `/game-room/${ data.token }` );
+                        setTimeout( function () { return setSnack( false ); }, 3000 );
+
+                    }
+                }
+            ).catch( ( err ) =>
+            {
+                console.log( err );
+                document.querySelector( '.overlay-nav ' ).style.opacity = '0';
+                document.querySelector( '.overlay-nav' ).style.width = '0';
+            } );
     };
 
     const showHidePassword = () =>
@@ -69,7 +133,7 @@ const SignIn = () =>
     }, [] );
     return (
         <>
-            <NavBar gameroom room={ 'Sign In' } logged={logged} name={name} />
+            <NavBar gameroom room={ 'Sign In' } logged={ logged } name={ name } />
 
             {
                 !logged ? <div className='sign-in-con'>
@@ -80,6 +144,9 @@ const SignIn = () =>
                                 type='email'
                                 placeholder='Enter your email'
                                 required
+                                minLength={ 6 }
+                                onChange={ getEmail }
+                                value={ email }
                                 className='sign-in-input sign-in-email-input'
                             />
                             <FontAwesomeIcon icon={ faEnvelope } className='sign-in-icon' />
@@ -91,6 +158,9 @@ const SignIn = () =>
                                 }
                                 placeholder='Choose your password'
                                 required
+                                minLength={ 6 }
+                                onChange={ getPassword }
+                                value={ password }
                                 className='sign-in-input sign-in-password-input'
                             />
                             <FontAwesomeIcon icon={ faEye } className='sign-in-icon' style={
@@ -117,10 +187,10 @@ const SignIn = () =>
                             isSignedIn={ true }
                             theme="dark"
                         />
-                        <button className='sign-in-accs-playgames' onClick={showSnack}>Sign In with Play Games <FontAwesomeIcon icon={ faGamepad } className='sign-up-accs-icon' /></button>
+                        <button className='sign-in-accs-playgames' onClick={ showSnack }>Sign In with Play Games <FontAwesomeIcon icon={ faGamepad } className='sign-up-accs-icon' /></button>
                     </div>
                     <div className='no-acc'>
-                        Don't have an account? 
+                        Don't have an account?
                         <Link
                             to='/game-room/signup'
                             style={ { color: '#D95BA0', textDecoration: 'none' } }
@@ -142,9 +212,9 @@ const SignIn = () =>
                     </div>
             }
             {
-                snack ? 
-                <SnackBar message={snackMessage} /> :
-                <></>
+                snack ?
+                    <SnackBar message={ snackMessage } /> :
+                    <></>
             }
         </>
     );

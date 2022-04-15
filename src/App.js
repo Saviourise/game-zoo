@@ -23,7 +23,7 @@ function App ()
         <Route path='/game-arena' exact element={ <GameArena /> } />
         <Route path='/game-zoo' exact element={ <GameZoo /> } />
         <Route path='/game-room' exact element={ <GameRoom /> } />
-        <Route path='/game-room/:room' exact element={ <GameRoom /> } />
+        <Route path='/game-room/:token' exact element={ <GameRoom /> } />
         <Route path='/game-room/signup' exact element={ <SignUp /> } />
         <Route path='/game-room/signin' exact element={ <SignIn /> } />
         <Route path='/game-zoo/search/:search' exact element={ <GameZoo /> } />

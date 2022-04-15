@@ -98,14 +98,14 @@ const NavBar = ( props ) =>
 
                                 {
                                     props.room === 'Live Stream' ? <Link
-                                        to={`/game-room/livestream`}
+                                        to={`/game-room/${props.token}`}
                                         style={ { color: '#D95BA0', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
                                     >
                                         LiveStream
                                     </Link> : <Link
-                                        to='/game-room/livestream'
+                                        to={`/game-room/${props.token}`}
                                         style={ { color: '#fff', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
@@ -116,14 +116,14 @@ const NavBar = ( props ) =>
 
                                 {
                                     props.room === 'Gaming Community' ? <Link
-                                        to='/game-room/community'
+                                        to={`/game-room/${props.token}`}
                                         style={ { color: '#D95BA0', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
                                     >
                                         Gaming Community
                                     </Link> : <Link
-                                        to='/game-room/community'
+                                        to={`/game-room/${props.token}`}
                                         style={ { color: '#fff', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
@@ -134,14 +134,14 @@ const NavBar = ( props ) =>
 
                                 {
                                     props.room === 'Events' ? <Link
-                                        to='/game-room/events'
+                                        to={`/game-room/${props.token}`}
                                         style={ { color: '#D95BA0', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
                                     >
                                         Events
                                     </Link> : <Link
-                                        to='/game-room/events'
+                                        to={`/game-room/${props.token}`}
                                         style={ { color: '#fff', textDecoration: 'none' } }
                                         className='home-page-nav-bar-item'
                                         onClick={ closeNavBar }
@@ -259,14 +259,14 @@ const NavBar = ( props ) =>
 
                                     {
                                         props.room === 'Live Stream' ? <Link
-                                            to='/game-room/livestream'
+                                            to={`/game-room/${props.token}`}
                                             style={ { color: '#D95BA0', textDecoration: 'none' } }
                                             className='home-page-nav-bar-item-phone'
                                             onClick={ closeNavBar }
                                         >
                                             LiveStream
                                         </Link> : <Link
-                                            to='/game-room/livestream'
+                                            to={`/game-room/${props.token}`}
                                             style={ { color: '#fff', textDecoration: 'none' } }
                                             className='home-page-nav-bar-item-phone'
                                             onClick={ closeNavBar }
@@ -277,14 +277,14 @@ const NavBar = ( props ) =>
 
                                     {
                                         props.room === 'Gaming Community' ? <Link
-                                            to='/game-room/community'
+                                            to={`/game-room/${props.token}`}
                                             style={ { color: '#D95BA0', textDecoration: 'none' } }
                                             className='home-page-nav-bar-item-phone'
                                             onClick={ closeNavBar }
                                         >
                                             Gaming Community
                                         </Link> : <Link
-                                            to='/game-room/community'
+                                            to={`/game-room/${props.token}`}
                                             style={ { color: '#fff', textDecoration: 'none' } }
                                             className='home-page-nav-bar-item-phone'
                                             onClick={ closeNavBar }
@@ -295,14 +295,14 @@ const NavBar = ( props ) =>
 
                                     {
                                         props.room === 'Events' ? <Link
-                                            to='/game-room/events'
+                                            to={`/game-room/${props.token}`}
                                             style={ { color: '#D95BA0', textDecoration: 'none' } }
                                             className='home-page-nav-bar-item-phone'
                                             onClick={ closeNavBar }
                                         >
                                             Events
                                         </Link> : <Link
-                                            to='/game-room/events'
+                                            to={`/game-room/${props.token}`}
                                             style={ { color: '#fff', textDecoration: 'none' } }
                                             className='home-page-nav-bar-item-phone'
                                             onClick={ closeNavBar }
