@@ -118,7 +118,16 @@ const SignUp = () =>
                         setTimeout( function () { return setSnack( false ); }, 3000 );
                     }
                 }
-            );
+            ).catch( ( err ) =>
+            {
+                console.log( err );
+                setSnack( true );
+                setSnackMessage( 'An error ocured, please try again' );
+                setLogged( false );
+                document.querySelector( '.overlay-nav ' ).style.opacity = '0';
+                document.querySelector( '.overlay-nav' ).style.width = '0';
+                setTimeout( function () { return setSnack( false ); }, 3000 );
+            } );
     };
 
     const showHidePassword = () =>
@@ -220,6 +229,7 @@ const SignUp = () =>
                             onLogoutSuccess={ onLogoutSuccess }
                             theme="dark"
                         /></div>
+                        
                     </div>
             }
             {

@@ -46,7 +46,7 @@ function LandingPage ()
     {
         window.addEventListener( 'scroll', () =>
         {
-            if ( window.scrollY > 100 )
+            if ( window.scrollY > 150 )
             {
                 setBlackNav( true );
             } else setBlackNav( false );

@@ -35,7 +35,7 @@
     top: 0;
     left: 0;
     z-index: 100000;
-    padding: 20px;
+    padding: 10px 20px;
     transition: all 1s;
 }
 
@@ -164,7 +164,7 @@
 
 .fadeBottom {
     height: 15rem;
-    margin-top: -160px;
+    margin-top: -120px;
     background-image: linear-gradient(
         180deg,
         transparent,
@@ -196,7 +196,7 @@
         cursor: pointer;
     }
     .fadeBottom {
-        margin-top: -145px;
+        margin-top: -125px;
     }
     .phone-nav {
         width: 100%;

@@ -75,6 +75,7 @@ const GameRoom = () =>
                 <h4 className='game-room-h4'>{ room }</h4>
                 <p className='game-room-p'>Coming Soon</p></>
             }
+            
         </div>
     );
 };
