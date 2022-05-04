@@ -164,9 +164,9 @@ function AnimatedPage1() {
       <div className="sep1" id="sep1">
         <div className="sep-1">
           <h5 className="date-released">Date Released</h5>
-          <h1 className="day">07</h1>
-          <h4 className="month">March</h4>
-          <h3 className="year">2022</h3>
+          <h1 className="day">23</h1>
+          <h4 className="month">FEBUARY</h4>
+          <h3 className="year">2017</h3>
         </div>
         <div className="animated-page-1" id="animated-page-1" ref={page}>
           <div className="hmmm">
@@ -186,8 +186,8 @@ function AnimatedPage1() {
       <div className="sep2">
         <div className="sep-1">
           <h5 className="date-released">Date Released</h5>
-          <h1 className="day">07</h1>
-          <h4 className="month">March</h4>
+          <h1 className="day">25</h1>
+          <h4 className="month">FEBUARY</h4>
           <h3 className="year">2022</h3>
         </div>
         <div className="animated-page-2" id="animated-page-2" ref={page2}>
@@ -206,9 +206,9 @@ function AnimatedPage1() {
       <div className="sep3">
         <div className="sep-1">
           <h5 className="date-released">Date Released</h5>
-          <h1 className="day">07</h1>
-          <h4 className="month">March</h4>
-          <h3 className="year">2022</h3>
+          <h1 className="day">23</h1>
+          <h4 className="month">APRIL</h4>
+          <h3 className="year">2019</h3>
         </div>
         <div className="animated-page-3" id="animated-page-3" ref={page3}>
           <div className="hmmm">
@@ -217,7 +217,7 @@ function AnimatedPage1() {
             <img className="overlay-img-3" src={char3} ref={img3} />
             <p className="game-text">
               MORTAL <br></br>
-              <span className="val">KOMBAT</span>
+              <span className="val">KOMBAT 11</span>
             </p>
           </div>
         </div>
