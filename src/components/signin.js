@@ -1,7 +1,7 @@
 import NavBar from './navBar';
 import './signin.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faUser, faEye, faPaperPlane, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faEye, faPaperPlane, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import SnackBar from './snackbar';

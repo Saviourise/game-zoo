@@ -1,10 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useRef, useState } from "react";
 import "./animatePage1.css";
-import { scroller } from "react-scroll";
 import char from "../assets/gamezone_Images/nier char.png";
 import char2 from "../assets/gamezone_Images/2_ELDEN-RING CHARACTER.png";
 import char3 from "../assets/gamezone_Images/MORTAL COMBAT CHARACTER.png";
-import character1bg from "../assets/gamezone_Images/nier full.jpg";
 
 function AnimatedPage1() {
   const animatedElement = useRef(null);
@@ -16,10 +15,10 @@ function AnimatedPage1() {
   const img1 = useRef(null);
   const img2 = useRef(null);
   const img3 = useRef(null);
-  const [direction, setDirection] = useState("");
+  //const [direction, setDirection] = useState("");
   const [embeded, setEmbeded] = useState("");
 
-  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  //let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
   const itemInView = (element, offset = 0) => {
     if (!element) return;
@@ -44,8 +43,6 @@ function AnimatedPage1() {
     setEmbeded("jSi2LDkyKmI");
     document.querySelector(".animated-page-modal").style.top = "0";
   };
-
-    
 
   const handleScrollAnimation = () => {
     animatedElement.current.style.transform = `rotateX(40deg)`;
@@ -103,7 +100,7 @@ function AnimatedPage1() {
     const itemDim = page.current.getBoundingClientRect();
     const itemDim2 = page2.current.getBoundingClientRect();
     const itemDim3 = page3.current.getBoundingClientRect();
-    if (itemDim.top == window.innerHeight) {
+    if (itemDim.top === window.innerHeight) {
       // console.log("in port")
       handleScrollUpAnimation();
       animatedElement.current.style.transform = "skew(0deg)";
@@ -144,20 +141,20 @@ function AnimatedPage1() {
     document.querySelector(".animated-page-modal").style.top = "-100vh";
   };
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      let st = window.pageYOffset || document.documentElement.scrollTop;
+  //   window.addEventListener(
+  //     "scroll",
+  //     () => {
+  //       let st = window.pageYOffset || document.documentElement.scrollTop;
 
-      if (st > lastScrollTop) {
-        setDirection("down");
-      } else {
-        setDirection("up");
-      }
-      lastScrollTop = st <= 0 ? 0 : st;
-    },
-    false
-  );
+  //       if (st > lastScrollTop) {
+  //         setDirection("down");
+  //       } else {
+  //         setDirection("up");
+  //       }
+  //       lastScrollTop = st <= 0 ? 0 : st;
+  //     },
+  //     false
+  //   );
 
   return (
     <>
@@ -193,7 +190,9 @@ function AnimatedPage1() {
         <div className="animated-page-2" id="animated-page-2" ref={page2}>
           <div className="hmmm">
             <div className="box" id="box2" ref={animatedElement2}></div>
-            <button className="see-more-btn" onClick={openTrailer2}>More Info...</button>
+            <button className="see-more-btn" onClick={openTrailer2}>
+              More Info...
+            </button>
             <img className="overlay-img-2" src={char2} ref={img2} />
             <p className="game-text">
               ELDEN <br></br>
@@ -213,7 +212,9 @@ function AnimatedPage1() {
         <div className="animated-page-3" id="animated-page-3" ref={page3}>
           <div className="hmmm">
             <div className="box" id="box3" ref={animatedElement3}></div>
-            <button className="see-more-btn" onClick={openTrailer3}>More Info...</button>
+            <button className="see-more-btn" onClick={openTrailer3}>
+              More Info...
+            </button>
             <img className="overlay-img-3" src={char3} ref={img3} />
             <p className="game-text">
               MORTAL <br></br>
